@@ -45,15 +45,16 @@ public class CameraSetUp : MonoBehaviour
 
             if (_camera.projectionMatrix == _perspective)
             {
-                ChangeCamera(5f, 0f, 1.2f).OnComplete(() =>
+                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
+                ChangeCamera(7f, 0f, 1.2f).OnComplete(() =>
                 {
-                    StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 0.3f));
+
                 });
             }
             else
             {
-                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, 0.3f));
-                DOVirtual.DelayedCall(0.3f, () => ChangeCamera(7f, 60f, 1.2f));
+                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, 0.1f));
+                DOVirtual.DelayedCall(0.1f, () => ChangeCamera(7f, 60f, 1.2f));
 
             }
         }
