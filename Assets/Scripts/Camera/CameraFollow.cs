@@ -13,15 +13,14 @@ public class CameraFollow : MonoBehaviour
     {
 
     }
-
     // Update is called once per frame
     void Update()
     {
 
     }
-
-    public void LateUpdate()
+    void FixedUpdate()
     {
         transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref vel, SmoothTime);
+
     }
 }
