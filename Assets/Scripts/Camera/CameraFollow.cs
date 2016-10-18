@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 
     public Transform Target;
     public float SmoothTime = 0.3f;
+    public Vector3 OffSet;
     private Vector3 vel = Vector3.zero;
 
     // Use this for initialization
@@ -20,7 +21,7 @@ public class CameraFollow : MonoBehaviour
     }
     void FixedUpdate()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref vel, SmoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, Target.position + OffSet, ref vel, SmoothTime);
 
     }
 }

@@ -4,6 +4,7 @@ using System;
 
 public class SideController : Controller
 {
+    private bool _isGrounded = false;
     public override void OnTop()
     {
         return;
@@ -26,11 +27,23 @@ public class SideController : Controller
 
     public override void Init()
     {
-
+        Start();
+        _body.useGravity = true;
     }
 
     public override void OnNoInput()
     {
 
     }
+
+    void Start()
+    {
+        _body = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+
+    }
+
 }

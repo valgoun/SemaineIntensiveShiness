@@ -11,15 +11,14 @@ public class TopController : Controller
     public float MaxRollSpeed, Acceleration, RotationSpeed, AngleMax, StabilizationSpeed;
     [Header("Roll")]
     public float TimeBetweenRoll;
-    public float RollingInitialTime, ResetTime;
+    public float RollingInitialTime, ResetTime, MinimalBounce;
 
     private float _velZ = 0;
-    private bool _isColliding = false;
     private Transform _Wall = null;
 
     private float _speed;
     private bool _isRolling;
-
+    private bool _isColliding = false;
 
     private Tween _rollingTween;
     private MeshRenderer _mRend;
@@ -34,8 +33,12 @@ public class TopController : Controller
 
     public override void OnNoInput()
     {
-        _body.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.right, Vector3.up), StabilizationSpeed * Time.deltaTime));
-        _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
+        if (!_isColliding)
+        {
+            _body.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.right, Vector3.up), StabilizationSpeed * Time.deltaTime));
+            _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
+            _velZ = _body.velocity.z;
+        }
     }
     public override void OnTop()
     {
@@ -49,12 +52,12 @@ public class TopController : Controller
 
     public override void OnTopDown()
     {
-        Debug.Log("Top Down");
+
     }
 
     public override void OnBotDown()
     {
-        Debug.Log("Bot Down");
+
     }
 
     public override void Init()
@@ -67,10 +70,6 @@ public class TopController : Controller
 
     public void Rotate(float rot)
     {
-        if (_isColliding)
-            return;
-
-        //Debug.Log(_Wall);
         if (_Wall)
         {
             if (Mathf.Sign(transform.position.z - _Wall.position.z) == Mathf.Sign(rot))
@@ -83,11 +82,6 @@ public class TopController : Controller
         _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
         _velZ = _body.velocity.z;
     }
-    void Update()
-    {
-        Debug.LogWarning("Rolling : " + _isRolling);
-    }
-
     void WaitForRoll()
     {
         _isRolling = false;
@@ -125,8 +119,8 @@ public class TopController : Controller
     {
         if (other.collider.transform.CompareTag("Wall"))
         {
-            _isColliding = false;
             _Wall = null;
+            _isColliding = false;
         }
     }
     void OnCollisionEnter(Collision other)
@@ -134,22 +128,24 @@ public class TopController : Controller
 
         if (other.collider.transform.CompareTag("Wall"))
         {
+            _isColliding = true;
             _Wall = other.transform;
             if (!_isRolling)
             {
                 _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
                 return;
             }
-            _isColliding = true;
             ResetRoll();
         }
         else
             return;
 
         Vector3 vel = _body.velocity;
-        vel.z = _velZ * -1f;
-        _velZ *= -1f;
+        float modifierZ = (Mathf.Abs(_velZ) > MinimalBounce) ? _velZ : Mathf.Sign(_velZ) * MinimalBounce;
+        Debug.Log("caca + " + modifierZ);
+        vel.z = modifierZ * -1f;
         _body.velocity = vel;
         _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
+        _velZ = _body.velocity.z;
     }
 }

@@ -36,6 +36,9 @@ public class CameraSetUp : MonoBehaviour
         _perspective = Matrix4x4.Perspective(Fov, _aspect, Near, Far);
         _camera.projectionMatrix = _perspective;
 
+
+        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
+        ChangeCamera(13.61f, 0f, 1.2f);
     }
 
     public void Update()
@@ -46,16 +49,12 @@ public class CameraSetUp : MonoBehaviour
             if (_camera.projectionMatrix == _perspective)
             {
                 StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
-                ChangeCamera(7f, 0f, 1.2f).OnComplete(() =>
-                {
-
-                });
+                ChangeCamera(13.61f, 0f, 1.2f);
             }
             else
             {
-                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, 0.1f));
-                DOVirtual.DelayedCall(0.1f, () => ChangeCamera(7f, 60f, 1.2f));
-
+                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, 1.2f));
+                ChangeCamera(13.61f, 60f, 1.2f);
             }
         }
     }
