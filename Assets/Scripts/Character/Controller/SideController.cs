@@ -26,6 +26,7 @@ public class SideController : Controller
     private bool _isRolling = false;
     private bool _isStomping = false;
     private MeshRenderer _mRend;
+    private Tweener tn;
     public override void OnTop()
     {
         if (_isJumping || _isGrounded || _isStomping)
@@ -47,19 +48,24 @@ public class SideController : Controller
         {
             _isJumping = true;
             _body.DOMoveY(JumpHeight, JumpTime).SetRelative().SetEase(JumpEase).OnComplete(() => _isJumping = false);
+            if (tn != null)
+            {
+                tn.Kill(false);
+                tn = null;
+            }
         }
         return;
     }
 
     public override void OnBotDown()
     {
-        if (_isStomping)
+        if (_isStomping || _isGrounded)
             return;
         _body.DOKill();
         _isRolling = true;
         _isStomping = true;
         _mRend.material.color = Color.green;
-        DOTween.To(() => { return _body.velocity.y; }, x =>
+        tn = DOTween.To(() => { return _body.velocity.y; }, x =>
         {
             Vector3 vel = _body.velocity;
             vel.y = x;

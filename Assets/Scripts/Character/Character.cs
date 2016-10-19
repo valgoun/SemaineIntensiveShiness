@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
         _body = GetComponent<Rigidbody>();
         _cam = Camera.main.GetComponent<CameraSetUp>();
 
-        setActiveController(_topController);
+        setActiveController(_sideController);
     }
 
     // Update is called once per frame
