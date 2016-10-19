@@ -22,9 +22,7 @@ public class TopController : Controller
 
     private Tween _rollingTween;
     private MeshRenderer _mRend;
-
-
-
+    
     void Start()
     {
         _body = GetComponent<Rigidbody>();
@@ -142,10 +140,21 @@ public class TopController : Controller
 
         Vector3 vel = _body.velocity;
         float modifierZ = (Mathf.Abs(_velZ) > MinimalBounce) ? _velZ : Mathf.Sign(_velZ) * MinimalBounce;
-        Debug.Log("caca + " + modifierZ);
         vel.z = modifierZ * -1f;
         _body.velocity = vel;
         _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
         _velZ = _body.velocity.z;
+    }
+
+    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction)
+    {
+        DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime );
+        DOVirtual.DelayedCall(DecelerationTime + 0.1f, () => {
+            Debug.Log(_body.rotation.y);
+            Rotate(-Mathf.Atan(Direction.x/Direction.z) * 10000);
+            Debug.Log(_body.rotation.y);
+            _speed = MaxRollSpeed;
+            _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
+        });
     }
 }
