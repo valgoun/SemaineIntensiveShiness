@@ -173,9 +173,9 @@ public class TopController : Controller
         _velZ = _body.velocity.z;
     }
 
-    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction)
+    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, Vector3 posBooster)
     {
-
+        transform.position = posBooster;
         DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime);
         DOVirtual.DelayedCall(DecelerationTime + 0.1f, () =>
         {

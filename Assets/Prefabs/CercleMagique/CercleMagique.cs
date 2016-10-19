@@ -21,7 +21,7 @@ public class CercleMagique : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<TopController>().Boost(BoostSpeed, DecelerationTime, transform.right);
+            other.GetComponent<TopController>().Boost(BoostSpeed, DecelerationTime, transform.right, transform.position);
         }
     }
 }
