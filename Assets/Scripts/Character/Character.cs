@@ -22,21 +22,26 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool inputEvent = false;
         //Inputs
-        float input = Input.GetAxis("Vertical");
-        if (input < 0.0)
-            _onBot();
-        else if (input > 0.0)
-            _onTop();
-        else
-            _onNoInput();
-        if (Input.GetButtonDown("Vertical"))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            _onTopDown();
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            _onBotDown();
+
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            if (input < 0.0)
-                _onBotDown();
-            else
-                _onTopDown();
+            _onBot();
+            inputEvent = true;
         }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            _onTop();
+            inputEvent = true;
+        }
+        if (!inputEvent)
+            _onNoInput();
+
     }
 
     void setActiveController(Controller controller)
