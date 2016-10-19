@@ -40,10 +40,14 @@ public class SideController : Controller
     {
         if (_isGrounded && !_isStomping)
         {
-            _isJumping = true;
             _body.DOMoveY(JumpHeight, JumpTime).SetRelative().SetEase(JumpEase).OnComplete(() => _isJumping = false);
         }
         return;
+    }
+
+    public void Bump(float JumpMultiplicator)
+    {
+        _body.DOMoveY(JumpHeight * JumpMultiplicator, JumpTime).SetRelative().SetEase(JumpEase).OnComplete(() => _isJumping = false);
     }
 
     public override void OnBotDown()
