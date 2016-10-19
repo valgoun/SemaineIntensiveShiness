@@ -25,6 +25,7 @@ public class TopController : Controller
 
 
 
+
     void Start()
     {
         _body = GetComponent<Rigidbody>();
@@ -52,12 +53,24 @@ public class TopController : Controller
 
     public override void OnTopDown()
     {
-
+        if (_Wall && _isRolling)
+        {
+            if (transform.position.z - _Wall.position.z < 0)
+            {
+                Bounce(-1f);
+            }
+        }
     }
 
     public override void OnBotDown()
     {
-
+        if (_Wall && _isRolling)
+        {
+            if (transform.position.z - _Wall.position.z > 0)
+            {
+                Bounce(1f);
+            }
+        }
     }
 
     public override void Init()
@@ -70,6 +83,8 @@ public class TopController : Controller
 
     public void Rotate(float rot)
     {
+        if (_isColliding)
+            return;
         if (_Wall)
         {
             if (Mathf.Sign(transform.position.z - _Wall.position.z) == Mathf.Sign(rot))
@@ -82,7 +97,7 @@ public class TopController : Controller
         _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
         _velZ = _body.velocity.z;
     }
-    void WaitForRoll()
+    public void WaitForRoll()
     {
         _isRolling = false;
         _speed = MaxRunSpeed;
@@ -97,7 +112,7 @@ public class TopController : Controller
         _mRend.material.color = Color.green;
         _rollingTween = DOVirtual.DelayedCall(time, () => WaitForRoll()).SetDelay(RollingInitialTime - ResetTime);
     }
-    void ResetRoll()
+    public void ResetRoll()
     {
         _rollingTween.Restart(false);
     }
@@ -125,10 +140,11 @@ public class TopController : Controller
     }
     void OnCollisionEnter(Collision other)
     {
+        if (!enabled)
+            return;
 
         if (other.collider.transform.CompareTag("Wall"))
         {
-            _isColliding = true;
             _Wall = other.transform;
             if (!_isRolling)
             {
@@ -139,11 +155,21 @@ public class TopController : Controller
         }
         else
             return;
-
+        if (_isRolling)
+            _isColliding = true;
         Vector3 vel = _body.velocity;
         float modifierZ = (Mathf.Abs(_velZ) > MinimalBounce) ? _velZ : Mathf.Sign(_velZ) * MinimalBounce;
-        Debug.Log("caca + " + modifierZ);
         vel.z = modifierZ * -1f;
+        _body.velocity = vel;
+        _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
+        _velZ = _body.velocity.z;
+    }
+
+    void Bounce(float direction)
+    {
+        Vector3 vel = _body.velocity;
+        float modifierZ = (Mathf.Abs(_velZ) > MinimalBounce) ? _velZ : Mathf.Sign(_velZ) * MinimalBounce;
+        vel.z = modifierZ * direction;
         _body.velocity = vel;
         _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
         _velZ = _body.velocity.z;
