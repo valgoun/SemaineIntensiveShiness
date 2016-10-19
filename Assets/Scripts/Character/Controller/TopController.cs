@@ -150,9 +150,7 @@ public class TopController : Controller
     {
         DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime );
         DOVirtual.DelayedCall(DecelerationTime + 0.1f, () => {
-            Debug.Log(_body.rotation.y);
             Rotate(-Mathf.Atan(Direction.x/Direction.z) * 10000);
-            Debug.Log(_body.rotation.y);
             _speed = MaxRollSpeed;
             _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
         });
