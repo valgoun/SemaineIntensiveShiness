@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/**
+- bug :
+    - re saute automatiquement
+*/
+
+using UnityEngine;
 using System.Collections;
 using System;
 using DG.Tweening;
@@ -113,4 +118,13 @@ public class SideController : Controller
             _isStomping = false;
     }
 
+    public override bool IsRolling()
+    {
+        return _isRolling;
+    }
+
+    public override void Disable()
+    {
+
+    }
 }

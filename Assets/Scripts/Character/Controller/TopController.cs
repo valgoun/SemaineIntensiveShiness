@@ -96,10 +96,13 @@ public class TopController : Controller
     }
     public void WaitForRoll()
     {
+        if (!enabled)
+            return;
         _isRolling = false;
         _speed = MaxRunSpeed;
         _mRend.material.color = Color.red;
         DOVirtual.DelayedCall(TimeBetweenRoll, () => Roll(ResetTime));
+        Debug.Log("caca");
     }
 
     void Roll(float time)
@@ -183,5 +186,15 @@ public class TopController : Controller
             _speed = MaxRollSpeed;
             _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
         });
+    }
+
+    public override bool IsRolling()
+    {
+        return _isRolling;
+    }
+
+    public override void Disable()
+    {
+        _rollingTween.Kill(false);
     }
 }

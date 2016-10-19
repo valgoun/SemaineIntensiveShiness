@@ -7,6 +7,8 @@ public class Character : MonoBehaviour
 {
     private Controller _activeController, _topController, _sideController;
     private Action _onBot, _onTop, _onBotDown, _onTopDown, _onNoInput;
+    private Rigidbody _body;
+    private CameraSetUp _cam;
     // Use this for initialization
     void Start()
     {
@@ -14,7 +16,8 @@ public class Character : MonoBehaviour
         _topController.enabled = false;
         _sideController = GetComponent<SideController>();
         _sideController.enabled = false;
-
+        _body = GetComponent<Rigidbody>();
+        _cam = Camera.main.GetComponent<CameraSetUp>();
 
         setActiveController(_topController);
     }
@@ -46,8 +49,6 @@ public class Character : MonoBehaviour
 
     void setActiveController(Controller controller)
     {
-        if (_activeController)
-            _activeController.enabled = false;
         _activeController = controller;
         _activeController.enabled = true;
 
@@ -59,6 +60,36 @@ public class Character : MonoBehaviour
         _onNoInput = controller.OnNoInput;
 
         controller.Init();
+    }
+
+    void disableController()
+    {
+        _activeController.enabled = false;
+        _activeController.Disable();
+    }
+
+    public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed)
+    {
+        if (!_activeController.IsRolling())
+        {
+            disableController();
+            _body.velocity = Vector3.zero;
+            _body.DOJump(runTarget.position, 5f, 1, (transform.position - runTarget.position).magnitude / runSpeed, false).SetUpdate(UpdateType.Fixed).OnComplete(() =>
+            {
+                setActiveController(_sideController);
+            });
+            _cam.GoToSide((transform.position - runTarget.position).magnitude / runSpeed - 0.2f);
+        }
+        else
+        {
+            disableController();
+            _body.velocity = Vector3.zero;
+            _body.DOJump(rollTarget.position, 5f, 1, (transform.position - rollTarget.position).magnitude / rollSpeed, false).SetUpdate(UpdateType.Fixed).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                setActiveController(_sideController);
+            });
+            _cam.GoToSide((transform.position - rollTarget.position).magnitude / rollSpeed - 0.2f);
+        }
     }
 
 }

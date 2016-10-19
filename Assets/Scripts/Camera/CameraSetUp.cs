@@ -43,20 +43,19 @@ public class CameraSetUp : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
 
-            if (_camera.projectionMatrix == _perspective)
-            {
-                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
-                ChangeCamera(13.61f, 0f, 1.2f);
-            }
-            else
-            {
-                StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, 1.2f));
-                ChangeCamera(13.61f, 60f, 1.2f);
-            }
-        }
+    }
+
+    public void GoToSide(float time)
+    {
+        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, time));
+        ChangeCamera(13.61f, 0f, time);
+    }
+
+    public void GoToPerspective(float time)
+    {
+        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, time));
+        ChangeCamera(13.61f, 60f, time);
     }
 
     Tweener ChangeCamera(float distance, float angle, float time)
