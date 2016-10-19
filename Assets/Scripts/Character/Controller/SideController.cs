@@ -23,7 +23,7 @@ public class SideController : Controller
     private MeshRenderer _mRend;
     public override void OnTop()
     {
-        if (_isJumping || _isGrounded)
+        if (_isJumping || _isGrounded || _isStomping)
             return;
         _isGliding = true;
         _isRolling = false;
@@ -32,6 +32,7 @@ public class SideController : Controller
 
     public override void OnBot()
     {
+        OnNoInput();
         return;
     }
 
@@ -47,7 +48,6 @@ public class SideController : Controller
 
     public override void OnBotDown()
     {
-        Debug.Log("Top");
         if (_isStomping)
             return;
         _body.DOKill();

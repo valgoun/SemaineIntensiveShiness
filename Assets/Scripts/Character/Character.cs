@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
         _sideController.enabled = false;
 
 
-        setActiveController(_topController);
+        setActiveController(_sideController);
     }
 
     // Update is called once per frame
