@@ -102,13 +102,13 @@ public class Character : MonoBehaviour
         _activeController.Disable();
     }
 
-    public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed)
+    public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed, float RunJumpForce, float RollJumpForce)
     {
         if (!_activeController.IsRolling())
         {
             disableController();
             _body.velocity = Vector3.zero;
-            _body.DOJump(runTarget.position, 5f, 1, (transform.position - runTarget.position).magnitude / runSpeed, false).SetUpdate(UpdateType.Fixed).OnComplete(() =>
+            _body.DOJump(runTarget.position, RunJumpForce, 1, (transform.position - runTarget.position).magnitude / runSpeed, false).SetUpdate(UpdateType.Fixed).OnComplete(() =>
             {
                 setActiveController(_sideController, false);
             });
@@ -118,7 +118,7 @@ public class Character : MonoBehaviour
         {
             disableController();
             _body.velocity = Vector3.zero;
-            _body.DOJump(rollTarget.position, 5f, 1, (transform.position - rollTarget.position).magnitude / rollSpeed, false).SetUpdate(UpdateType.Fixed).SetEase(Ease.Linear).OnComplete(() =>
+            _body.DOJump(rollTarget.position, RollJumpForce, 1, (transform.position - rollTarget.position).magnitude / rollSpeed, false).SetUpdate(UpdateType.Fixed).SetEase(Ease.Linear).OnComplete(() =>
             {
                 setActiveController(_sideController, true);
             });
@@ -126,16 +126,16 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void goTopView(Transform target, float speed)
+    public void goTopView(Transform target, float speed, float JumpForce)
     {
         disableController();
         _body.velocity = Vector3.zero;
         float time = (transform.position - target.position).magnitude / speed;
-        _body.DOJump(target.position, 5f, 1, time).SetUpdate(UpdateType.Fixed).OnComplete(() =>
+        _body.DOJump(target.position, JumpForce, 1, time).SetUpdate(UpdateType.Fixed).OnComplete(() =>
         {
             setActiveController(_topController, true);
         }).SetEase(Ease.Linear);
-        _cam.GoToPerspective(time);
+        _cam.GoToPerspective(time * 2);
     }
 
     /// <summary>
