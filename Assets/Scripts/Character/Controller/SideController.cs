@@ -128,7 +128,7 @@ public class SideController : Controller
             BabyAnim[i] = BabyPoui[i].GetComponent<Animator>();
         }
 
-        rotation = Poui.transform.rotation.eulerAngles;
+        rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RotationSpeed * Time.deltaTime, 0, 0);
     }
 
     void FixedUpdate()
@@ -152,23 +152,16 @@ public class SideController : Controller
         Anim.SetBool("IsStomping", _isStomping);
         Anim.SetBool("IsDead", _isDead);
 
-        if (!_isRotating && _isRolling)
+        if (_isRolling)
         {
             Poui.transform.DOScaleY(0.7f, BlendSpeed);
-            rotation = Poui.transform.rotation.eulerAngles;
-            Debug.Log(rotation);
-            rotation = new Vector3(rotation.x + RotationSpeed * Time.deltaTime, 90, 0);
-            Debug.Log(rotation);
             Pivot.transform.Rotate(rotation);
-            _isRotating = true;
         }
 
         if (!_isRolling)
         {
-            _isRotating = false;
             Poui.transform.DOScaleY(1, BlendSpeed);
-            rotation = Poui.transform.rotation.eulerAngles;
-            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.001f);
+            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
         }
 
         for (int i = 0; i < 3; i++)
