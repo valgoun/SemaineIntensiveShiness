@@ -74,7 +74,7 @@ public class SideController : Controller
         return;
     }
 
-    public override void Init()
+    public override void Init(bool IsRolling)
     {
         Start();
         _body.useGravity = true;

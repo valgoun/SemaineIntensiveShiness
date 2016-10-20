@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
         _body = GetComponent<Rigidbody>();
         _cam = Camera.main.GetComponent<CameraSetUp>();
 
-        setActiveController(_sideController);
+        setActiveController(_topController, false);
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
 
     }
 
-    void setActiveController(Controller controller)
+    void setActiveController(Controller controller, bool IsRolling)
     {
         _activeController = controller;
         _activeController.enabled = true;
@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
         _onBotDown = controller.OnBotDown;
         _onNoInput = controller.OnNoInput;
 
-        controller.Init();
+        controller.Init(IsRolling);
     }
 
     void disableController()
@@ -76,7 +76,7 @@ public class Character : MonoBehaviour
             _body.velocity = Vector3.zero;
             _body.DOJump(runTarget.position, 5f, 1, (transform.position - runTarget.position).magnitude / runSpeed, false).SetUpdate(UpdateType.Fixed).OnComplete(() =>
             {
-                setActiveController(_sideController);
+                setActiveController(_sideController, false);
             });
             _cam.GoToSide((transform.position - runTarget.position).magnitude / runSpeed - 0.2f);
         }
@@ -86,10 +86,22 @@ public class Character : MonoBehaviour
             _body.velocity = Vector3.zero;
             _body.DOJump(rollTarget.position, 5f, 1, (transform.position - rollTarget.position).magnitude / rollSpeed, false).SetUpdate(UpdateType.Fixed).SetEase(Ease.Linear).OnComplete(() =>
             {
-                setActiveController(_sideController);
+                setActiveController(_sideController, true);
             });
             _cam.GoToSide((transform.position - rollTarget.position).magnitude / rollSpeed - 0.2f);
         }
+    }
+
+    public void goTopView(Transform target, float speed)
+    {
+        disableController();
+        _body.velocity = Vector3.zero;
+        float time = (transform.position - target.position).magnitude / speed;
+        _body.DOJump(target.position, 5f, 1, time).SetUpdate(UpdateType.Fixed).OnComplete(() =>
+        {
+            setActiveController(_topController, true);
+        }).SetEase(Ease.Linear);
+        _cam.GoToPerspective(time);
     }
 
 }

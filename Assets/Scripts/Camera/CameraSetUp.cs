@@ -36,8 +36,8 @@ public class CameraSetUp : MonoBehaviour
         _perspective = Matrix4x4.Perspective(Fov, _aspect, Near, Far);
         _camera.projectionMatrix = _perspective;
 
-
-        GoToSide(0.2f);
+        GoToPerspective(0.2f);
+        //GoToSide(0.2f);
     }
 
     public void Update()

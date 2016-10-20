@@ -70,12 +70,17 @@ public class TopController : Controller
         }
     }
 
-    public override void Init()
+    public override void Init(bool IsRolling)
     {
         Start();
         _speed = MaxRunSpeed;
-
-        WaitForRoll();
+        if (!_isRolling)
+            WaitForRoll();
+        else
+        {
+            Roll(ResetTime);
+            _body.velocity = Vector3.right * _speed * 0.7f;
+        }
     }
 
     public void Rotate(float rot)
@@ -102,7 +107,6 @@ public class TopController : Controller
         _speed = MaxRunSpeed;
         _mRend.material.color = Color.red;
         DOVirtual.DelayedCall(TimeBetweenRoll, () => Roll(ResetTime));
-        Debug.Log("caca");
     }
 
     void Roll(float time)

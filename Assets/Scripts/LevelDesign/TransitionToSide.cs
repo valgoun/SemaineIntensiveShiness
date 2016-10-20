@@ -14,17 +14,10 @@ public class TransitionToSide : MonoBehaviour
         _rollTarget = transform.GetChild(1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Player"))
         {
-            Debug.Log("Changement");
             other.GetComponent<Character>().goSideView(_runTarget, _rollTarget, _runSpeed, _rollSpeed);
         }
     }

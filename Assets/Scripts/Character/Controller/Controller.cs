@@ -10,7 +10,7 @@ public abstract class Controller : MonoBehaviour
     public abstract void OnTopDown();
     public abstract void OnBotDown();
     public abstract void OnNoInput();
-    public abstract void Init();
+    public abstract void Init(bool IsRolling);
     public abstract void Disable();
 
 }
