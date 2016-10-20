@@ -22,7 +22,7 @@ public class CercleMagique : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<TopController>().Boost(BoostSpeed, DecelerationTime, transform.right, NoStabilisationTime);
+            other.GetComponent<TopController>().Boost(BoostSpeed, DecelerationTime, transform.right, NoStabilisationTime, transform.position);
         }
     }
 }

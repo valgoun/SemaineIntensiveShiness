@@ -241,10 +241,14 @@ public class TopController : Controller
     /// <param name="BoostSpeed"></param>
     /// <param name="DecelerationTime"></param>
     /// <param name="Direction"></param>
-    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, float NoStabilisationTime)
+    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, float NoStabilisationTime, Vector3 pos)
     {
         _isBoosting = true;
-        DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime);
+        DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime).OnComplete(() =>
+        {
+            transform.position = pos;
+        });
+
         DOVirtual.DelayedCall(DecelerationTime + 0.1f, () =>
         {
             if (Direction.z != 0)

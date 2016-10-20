@@ -81,8 +81,8 @@ public class SideController : Controller
         if (_isStomping)
             return;
         _isRolling = true;
-        if(_isGrounded)
-        return;
+        if (_isGrounded)
+            return;
         _body.DOKill();
         _isStomping = true;
         _mRend.material.color = Color.green;
