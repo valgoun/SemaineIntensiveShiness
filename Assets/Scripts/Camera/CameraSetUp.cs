@@ -37,8 +37,8 @@ public class CameraSetUp : MonoBehaviour
         _camera.projectionMatrix = _perspective;
 
 
-        //StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
-        //ChangeCamera(13.61f, 0f, 1.2f);
+        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
+        ChangeCamera(13.61f, 0f, 1.2f);
     }
 
     public void Update()
