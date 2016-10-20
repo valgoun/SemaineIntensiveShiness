@@ -114,7 +114,10 @@ public class SideController : Controller
         checkGround();
     }
 
-
+    /// <summary>
+    /// Check under the player if there is Ground
+    /// The ground need to be on the same layer as specified by GroundDistance
+    /// </summary>
     void checkGround()
     {
         Ray r = new Ray(transform.position, Vector3.down);
@@ -131,6 +134,6 @@ public class SideController : Controller
 
     public override void Disable()
     {
-
+        //nothing to do when disable
     }
 }

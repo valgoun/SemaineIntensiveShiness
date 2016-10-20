@@ -83,6 +83,10 @@ public class TopController : Controller
         }
     }
 
+    /// <summary>
+    /// Rotate the character (and its velocity)
+    /// </summary>
+    /// <param name="rot">the amount of rotation (signed)</param>
     public void Rotate(float rot)
     {
         if (_isColliding)
@@ -99,6 +103,10 @@ public class TopController : Controller
         _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
         _velZ = _body.velocity.z;
     }
+
+    /// <summary>
+    /// Wait for execute the next rolling phase
+    /// </summary>
     public void WaitForRoll()
     {
         if (!enabled)
@@ -109,6 +117,10 @@ public class TopController : Controller
         DOVirtual.DelayedCall(TimeBetweenRoll, () => Roll(ResetTime));
     }
 
+    /// <summary>
+    /// Roll the player, should only be called to initiliaze the first roll, then use ResetRoll
+    /// </summary>
+    /// <param name="time">the amount of time the player has to stay in roll</param>
     void Roll(float time)
     {
         _isRolling = true;
@@ -116,9 +128,13 @@ public class TopController : Controller
         _mRend.material.color = Color.green;
         _rollingTween = DOVirtual.DelayedCall(time, () => WaitForRoll()).SetDelay(RollingInitialTime - ResetTime);
     }
+    /// <summary>
+    /// Reset the timer for roll
+    /// </summary>
     public void ResetRoll()
     {
-        _rollingTween.Restart(false);
+        if (_rollingTween != null)
+            _rollingTween.Restart(false);
     }
     void FixedUpdate()
     {
@@ -169,7 +185,10 @@ public class TopController : Controller
         _velZ = _body.velocity.z;
     }
 
-
+    /// <summary>
+    /// Manually bounce the character in one direction
+    /// </summary>
+    /// <param name="direction">the direction to bounce the character</param>
     void Bounce(float direction)
     {
         Vector3 vel = _body.velocity;
@@ -180,6 +199,12 @@ public class TopController : Controller
         _velZ = _body.velocity.z;
     }
 
+    /// <summary>
+    /// Boost the player in one direction
+    /// </summary>
+    /// <param name="BoostSpeed"></param>
+    /// <param name="DecelerationTime"></param>
+    /// <param name="Direction"></param>
     public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction)
     {
 
