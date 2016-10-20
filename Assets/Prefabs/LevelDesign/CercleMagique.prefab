@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23835259491407764}
   - component: {fileID: 114220845422086156}
   m_Layer: 0
-  m_Name: Boost
+  m_Name: CercleMagique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

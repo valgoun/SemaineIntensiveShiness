@@ -17,6 +17,7 @@ public class TopController : Controller
     private Transform _Wall = null;
 
     private float _speed;
+    private float _alterationSpeed = 0.0f;
     private bool _isRolling;
     private bool _isColliding = false;
 
@@ -73,9 +74,10 @@ public class TopController : Controller
     public override void Init(bool IsRolling)
     {
         Start();
-        _speed = MaxRunSpeed;
         if (!_isRolling)
+        {
             WaitForRoll();
+        }
         else
         {
             Roll(ResetTime);
@@ -140,13 +142,13 @@ public class TopController : Controller
     {
         if (!_body)
             return;
-        if (_body.velocity.magnitude < _speed)
+        if (_body.velocity.magnitude < (_speed + _alterationSpeed))
         {
             _body.AddForce(transform.forward * Acceleration, ForceMode.Acceleration);
         }
         else
         {
-            _body.velocity = _body.velocity.normalized * _speed;
+            _body.velocity = _body.velocity.normalized * (_speed + _alterationSpeed);
         }
 
     }
@@ -225,5 +227,14 @@ public class TopController : Controller
     public override void Disable()
     {
         _rollingTween.Kill(false);
+    }
+
+    /// <summary>
+    /// increment the speed modifier by the amount specified (can be negative)
+    /// </summary>
+    /// <param name="amount"></param>
+    public void ModifySpeed(float amount)
+    {
+        _alterationSpeed += amount;
     }
 }
