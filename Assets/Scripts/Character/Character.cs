@@ -5,11 +5,44 @@ using System;
 
 public class Character : MonoBehaviour
 {
+    public float TotalLifePoint;
+    public static Character MainCharacter
+    {
+        get
+        {
+            return _mainCharacter;
+        }
+    }
+
+    public float Coins
+    {
+        get
+        {
+            return _coins;
+        }
+        set
+        {
+            _coins = value;
+        }
+    }
+
     private Controller _activeController, _topController, _sideController;
     private Action _onBot, _onTop, _onBotDown, _onTopDown, _onNoInput;
     private Rigidbody _body;
     private CameraSetUp _cam;
+    private float _lifePoints;
+    private float _coins;
+    private static Character _mainCharacter;
+
+
     // Use this for initialization
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        _mainCharacter = this;
+    }
     void Start()
     {
         _topController = GetComponent<TopController>();
@@ -102,6 +135,20 @@ public class Character : MonoBehaviour
             setActiveController(_topController, true);
         }).SetEase(Ease.Linear);
         _cam.GoToPerspective(time);
+    }
+
+    /// <summary>
+    /// Deal Damages to the character
+    /// </summary>
+    /// <param name="amount">how many life point will the character loose</param>
+    public void DealDamages(float amount)
+    {
+        _lifePoints -= amount;
+        if (_lifePoints <= 0.0f)
+        {
+            _lifePoints = 0.0f;
+            //TODO : Death
+        }
     }
 
 }
