@@ -25,6 +25,7 @@ public class Character : MonoBehaviour
             _coins = value;
         }
     }
+    public float deathLevel = -20f;
 
     private Controller _activeController, _topController, _sideController;
     private Action _onBot, _onTop, _onBotDown, _onTopDown, _onNoInput;
@@ -81,6 +82,10 @@ public class Character : MonoBehaviour
         if (!inputEvent)
             _onNoInput();
 
+        if (transform.position.y < deathLevel)
+        {
+            Debug.Log("DEATH!!!");
+        }
     }
 
     void setActiveController(Controller controller, bool IsRolling)
