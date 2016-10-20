@@ -4052,7 +4052,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620730387685070}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.882, z: 0}
+  m_LocalPosition: {x: 0, y: 0.82, z: -57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4574918435758124}
@@ -6979,7 +6979,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7010,7 +7010,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7041,7 +7041,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7072,7 +7072,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7103,7 +7103,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7134,7 +7134,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7165,7 +7165,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7196,7 +7196,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7258,7 +7258,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7289,7 +7289,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7320,7 +7320,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7351,7 +7351,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1804bc79153dba4d8cb0b8030f75ad4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7562,15 +7562,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRunSpeed: 15
-  MaxRollSpeed: 30
+  MaxRollSpeed: 25
   Acceleration: 12.5
-  RotationSpeed: 75
+  RotationSpeed: 100
   AngleMax: 35
-  StabilizationSpeed: 55
+  StabilizationSpeed: 40
   TimeBetweenRoll: 2
   RollingInitialTime: 5
   ResetTime: 0.2
   MinimalBounce: 25
+  RollingSpeed: 2000
+  BlendSpeed: 0
 --- !u!114 &114357356968799514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7583,12 +7585,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroundDistance: 0.6
-  JumpHeight: 2
+  JumpHeight: 5
   JumpTime: 0.2
   GlidingVerticalSpeed: 0.5
-  Speed: 7.5
-  RollingSpeed: 12.5
-  StompingSpeed: 25
+  Speed: 10
+  RollingSpeed: 16
+  StompingSpeed: 55
   StompingTime: 0.2
   JumpEase: 0
   StompingEase: 0
@@ -7608,6 +7610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e743ed0637b364db92d5c57ff984e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TotalLifePoint: 0
 --- !u!135 &135393804026962448
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -7741,7 +7744,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d8af36e5b3a6fc340856fdc19ec8b7a3, type: 2}
+  - {fileID: 2100000, guid: 56044e96afb810d4c83ba11bdca76b37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
