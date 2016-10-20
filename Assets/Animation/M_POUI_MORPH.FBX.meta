@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 820cf6564aa7a7c40addef7c5e4597e9
-timeCreated: 1476881371
+guid: 5a521a773b7fc8243a0967e9065c52a9
+timeCreated: 1476950578
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -49,55 +49,56 @@ ModelImporter:
     100082: Poui_L_Wings_03_RIG
     100084: Poui_L_Wings_04_RIG
     100086: Poui_MDL
-    100088: Poui_Mouse_Down_CTRL
-    100090: Poui_Mouse_Up_CTRL
-    100092: Poui_Pelvis_01_RIG
-    100094: Poui_Pelvis_02_RIG
-    100096: Poui_R_Ankle_Pivot_RIG
-    100098: Poui_R_Bank_L_Pivot_RIG
-    100100: Poui_R_Bank_R_Pivot_RIG
-    100102: Poui_R_Eye_CTRL
-    100104: Poui_R_EyeBrow_01_CTRL
-    100106: Poui_R_EyeBrow_02_CTRL
-    100108: Poui_R_EyeBrow_03_CTRL
-    100110: Poui_R_Foot_IK_RIG
-    100112: Poui_R_Foot_Ikchain_RIG
-    100114: Poui_R_Foot_Skin_RIG
-    100116: Poui_R_FootRoll_Parent_RIG
-    100118: Poui_R_Heel_Pivot_RIG
-    100120: Poui_R_Leg_CTRL
-    100122: Poui_R_Leg_Ikchain_RIG
-    100124: Poui_R_LegWrapper_RIG
-    100126: Poui_R_Lift_Pivot_RIG
-    100128: Poui_R_LowerLeg_IK_Child_RIG
-    100130: Poui_R_LowerLeg_IK_RIG
-    100132: Poui_R_LowerLeg_Skin_RIG
-    100134: Poui_R_Tail_A_01_RIG
-    100136: Poui_R_Tail_A_02_RIG
-    100138: Poui_R_Tail_B_01_RIG
-    100140: Poui_R_Tail_B_02_RIG
-    100142: Poui_R_Toes_Bone_Child_RIG
-    100144: Poui_R_Toes_Bone_RIG
-    100146: Poui_R_Toes_IK_Child_RIG
-    100148: Poui_R_Toes_IK_CTRL
-    100150: Poui_R_Toes_IK_RIG
-    100152: Poui_R_Toes_Ikchain_RIG
-    100154: Poui_R_Toes_Parent_RIG
-    100156: Poui_R_Toes_Pivot_RIG
-    100158: Poui_R_Toes_Skin_RIG
-    100160: Poui_R_UpperLeg_IK_RIG
-    100162: Poui_R_UpperLeg_Skin_RIG
-    100164: Poui_R_Wings_01_RIG
-    100166: Poui_R_Wings_02_RIG
-    100168: Poui_R_Wings_03_RIG
-    100170: Poui_R_Wings_04_RIG
-    100172: Poui_Root_CTRL
-    100174: Poui_Spine_01_RIG
-    100176: Poui_Spine_02_RIG
-    100178: Poui_Spine_03_RIG
-    100180: Poui_Tongue_01_CTRL
-    100182: Poui_Tongue_02_CTRL
-    100184: Poui_World_CTRL
+    100088: Poui_MDL001
+    100090: Poui_Mouse_Down_CTRL
+    100092: Poui_Mouse_Up_CTRL
+    100094: Poui_Pelvis_01_RIG
+    100096: Poui_Pelvis_02_RIG
+    100098: Poui_R_Ankle_Pivot_RIG
+    100100: Poui_R_Bank_L_Pivot_RIG
+    100102: Poui_R_Bank_R_Pivot_RIG
+    100104: Poui_R_Eye_CTRL
+    100106: Poui_R_EyeBrow_01_CTRL
+    100108: Poui_R_EyeBrow_02_CTRL
+    100110: Poui_R_EyeBrow_03_CTRL
+    100112: Poui_R_Foot_IK_RIG
+    100114: Poui_R_Foot_Ikchain_RIG
+    100116: Poui_R_Foot_Skin_RIG
+    100118: Poui_R_FootRoll_Parent_RIG
+    100120: Poui_R_Heel_Pivot_RIG
+    100122: Poui_R_Leg_CTRL
+    100124: Poui_R_Leg_Ikchain_RIG
+    100126: Poui_R_LegWrapper_RIG
+    100128: Poui_R_Lift_Pivot_RIG
+    100130: Poui_R_LowerLeg_IK_Child_RIG
+    100132: Poui_R_LowerLeg_IK_RIG
+    100134: Poui_R_LowerLeg_Skin_RIG
+    100136: Poui_R_Tail_A_01_RIG
+    100138: Poui_R_Tail_A_02_RIG
+    100140: Poui_R_Tail_B_01_RIG
+    100142: Poui_R_Tail_B_02_RIG
+    100144: Poui_R_Toes_Bone_Child_RIG
+    100146: Poui_R_Toes_Bone_RIG
+    100148: Poui_R_Toes_IK_Child_RIG
+    100150: Poui_R_Toes_IK_CTRL
+    100152: Poui_R_Toes_IK_RIG
+    100154: Poui_R_Toes_Ikchain_RIG
+    100156: Poui_R_Toes_Parent_RIG
+    100158: Poui_R_Toes_Pivot_RIG
+    100160: Poui_R_Toes_Skin_RIG
+    100162: Poui_R_UpperLeg_IK_RIG
+    100164: Poui_R_UpperLeg_Skin_RIG
+    100166: Poui_R_Wings_01_RIG
+    100168: Poui_R_Wings_02_RIG
+    100170: Poui_R_Wings_03_RIG
+    100172: Poui_R_Wings_04_RIG
+    100174: Poui_Root_CTRL
+    100176: Poui_Spine_01_RIG
+    100178: Poui_Spine_02_RIG
+    100180: Poui_Spine_03_RIG
+    100182: Poui_Tongue_01_CTRL
+    100184: Poui_Tongue_02_CTRL
+    100186: Poui_World_CTRL
     400000: //RootNode
     400002: Poui_Facial_Parent_RIG
     400004: Poui_Hip_CTRL
@@ -142,73 +143,76 @@ ModelImporter:
     400082: Poui_L_Wings_03_RIG
     400084: Poui_L_Wings_04_RIG
     400086: Poui_MDL
-    400088: Poui_Mouse_Down_CTRL
-    400090: Poui_Mouse_Up_CTRL
-    400092: Poui_Pelvis_01_RIG
-    400094: Poui_Pelvis_02_RIG
-    400096: Poui_R_Ankle_Pivot_RIG
-    400098: Poui_R_Bank_L_Pivot_RIG
-    400100: Poui_R_Bank_R_Pivot_RIG
-    400102: Poui_R_Eye_CTRL
-    400104: Poui_R_EyeBrow_01_CTRL
-    400106: Poui_R_EyeBrow_02_CTRL
-    400108: Poui_R_EyeBrow_03_CTRL
-    400110: Poui_R_Foot_IK_RIG
-    400112: Poui_R_Foot_Ikchain_RIG
-    400114: Poui_R_Foot_Skin_RIG
-    400116: Poui_R_FootRoll_Parent_RIG
-    400118: Poui_R_Heel_Pivot_RIG
-    400120: Poui_R_Leg_CTRL
-    400122: Poui_R_Leg_Ikchain_RIG
-    400124: Poui_R_LegWrapper_RIG
-    400126: Poui_R_Lift_Pivot_RIG
-    400128: Poui_R_LowerLeg_IK_Child_RIG
-    400130: Poui_R_LowerLeg_IK_RIG
-    400132: Poui_R_LowerLeg_Skin_RIG
-    400134: Poui_R_Tail_A_01_RIG
-    400136: Poui_R_Tail_A_02_RIG
-    400138: Poui_R_Tail_B_01_RIG
-    400140: Poui_R_Tail_B_02_RIG
-    400142: Poui_R_Toes_Bone_Child_RIG
-    400144: Poui_R_Toes_Bone_RIG
-    400146: Poui_R_Toes_IK_Child_RIG
-    400148: Poui_R_Toes_IK_CTRL
-    400150: Poui_R_Toes_IK_RIG
-    400152: Poui_R_Toes_Ikchain_RIG
-    400154: Poui_R_Toes_Parent_RIG
-    400156: Poui_R_Toes_Pivot_RIG
-    400158: Poui_R_Toes_Skin_RIG
-    400160: Poui_R_UpperLeg_IK_RIG
-    400162: Poui_R_UpperLeg_Skin_RIG
-    400164: Poui_R_Wings_01_RIG
-    400166: Poui_R_Wings_02_RIG
-    400168: Poui_R_Wings_03_RIG
-    400170: Poui_R_Wings_04_RIG
-    400172: Poui_Root_CTRL
-    400174: Poui_Spine_01_RIG
-    400176: Poui_Spine_02_RIG
-    400178: Poui_Spine_03_RIG
-    400180: Poui_Tongue_01_CTRL
-    400182: Poui_Tongue_02_CTRL
-    400184: Poui_World_CTRL
-    2300000: //RootNode
-    2300002: Poui_L_Foot_Skin_RIG
-    2300004: Poui_L_LowerLeg_Skin_RIG
-    2300006: Poui_L_Toes_Skin_RIG
-    2300008: Poui_L_UpperLeg_Skin_RIG
-    2300010: Poui_R_Foot_Skin_RIG
-    2300012: Poui_R_LowerLeg_Skin_RIG
-    2300014: Poui_R_Toes_Skin_RIG
-    2300016: Poui_R_UpperLeg_Skin_RIG
-    3300000: //RootNode
-    3300002: Poui_L_Foot_Skin_RIG
-    3300004: Poui_L_LowerLeg_Skin_RIG
-    3300006: Poui_L_Toes_Skin_RIG
-    3300008: Poui_L_UpperLeg_Skin_RIG
-    3300010: Poui_R_Foot_Skin_RIG
-    3300012: Poui_R_LowerLeg_Skin_RIG
-    3300014: Poui_R_Toes_Skin_RIG
-    3300016: Poui_R_UpperLeg_Skin_RIG
+    400088: Poui_MDL001
+    400090: Poui_Mouse_Down_CTRL
+    400092: Poui_Mouse_Up_CTRL
+    400094: Poui_Pelvis_01_RIG
+    400096: Poui_Pelvis_02_RIG
+    400098: Poui_R_Ankle_Pivot_RIG
+    400100: Poui_R_Bank_L_Pivot_RIG
+    400102: Poui_R_Bank_R_Pivot_RIG
+    400104: Poui_R_Eye_CTRL
+    400106: Poui_R_EyeBrow_01_CTRL
+    400108: Poui_R_EyeBrow_02_CTRL
+    400110: Poui_R_EyeBrow_03_CTRL
+    400112: Poui_R_Foot_IK_RIG
+    400114: Poui_R_Foot_Ikchain_RIG
+    400116: Poui_R_Foot_Skin_RIG
+    400118: Poui_R_FootRoll_Parent_RIG
+    400120: Poui_R_Heel_Pivot_RIG
+    400122: Poui_R_Leg_CTRL
+    400124: Poui_R_Leg_Ikchain_RIG
+    400126: Poui_R_LegWrapper_RIG
+    400128: Poui_R_Lift_Pivot_RIG
+    400130: Poui_R_LowerLeg_IK_Child_RIG
+    400132: Poui_R_LowerLeg_IK_RIG
+    400134: Poui_R_LowerLeg_Skin_RIG
+    400136: Poui_R_Tail_A_01_RIG
+    400138: Poui_R_Tail_A_02_RIG
+    400140: Poui_R_Tail_B_01_RIG
+    400142: Poui_R_Tail_B_02_RIG
+    400144: Poui_R_Toes_Bone_Child_RIG
+    400146: Poui_R_Toes_Bone_RIG
+    400148: Poui_R_Toes_IK_Child_RIG
+    400150: Poui_R_Toes_IK_CTRL
+    400152: Poui_R_Toes_IK_RIG
+    400154: Poui_R_Toes_Ikchain_RIG
+    400156: Poui_R_Toes_Parent_RIG
+    400158: Poui_R_Toes_Pivot_RIG
+    400160: Poui_R_Toes_Skin_RIG
+    400162: Poui_R_UpperLeg_IK_RIG
+    400164: Poui_R_UpperLeg_Skin_RIG
+    400166: Poui_R_Wings_01_RIG
+    400168: Poui_R_Wings_02_RIG
+    400170: Poui_R_Wings_03_RIG
+    400172: Poui_R_Wings_04_RIG
+    400174: Poui_Root_CTRL
+    400176: Poui_Spine_01_RIG
+    400178: Poui_Spine_02_RIG
+    400180: Poui_Spine_03_RIG
+    400182: Poui_Tongue_01_CTRL
+    400184: Poui_Tongue_02_CTRL
+    400186: Poui_World_CTRL
+    2300000: Poui_L_Foot_Skin_RIG
+    2300002: Poui_L_LowerLeg_Skin_RIG
+    2300004: Poui_L_Toes_Skin_RIG
+    2300006: Poui_L_UpperLeg_Skin_RIG
+    2300008: Poui_MDL001
+    2300010: Poui_Mouse_Up_CTRL
+    2300012: Poui_R_Foot_Skin_RIG
+    2300014: Poui_R_LowerLeg_Skin_RIG
+    2300016: Poui_R_Toes_Skin_RIG
+    2300018: Poui_R_UpperLeg_Skin_RIG
+    3300000: Poui_L_Foot_Skin_RIG
+    3300002: Poui_L_LowerLeg_Skin_RIG
+    3300004: Poui_L_Toes_Skin_RIG
+    3300006: Poui_L_UpperLeg_Skin_RIG
+    3300008: Poui_MDL001
+    3300010: Poui_Mouse_Up_CTRL
+    3300012: Poui_R_Foot_Skin_RIG
+    3300014: Poui_R_LowerLeg_Skin_RIG
+    3300016: Poui_R_Toes_Skin_RIG
+    3300018: Poui_R_UpperLeg_Skin_RIG
     4300000: Poui_MDL
     4300002: Poui_L_UpperLeg_Skin_RIG
     4300004: Poui_L_LowerLeg_Skin_RIG
@@ -218,9 +222,11 @@ ModelImporter:
     4300012: Poui_R_LowerLeg_Skin_RIG
     4300014: Poui_R_Foot_Skin_RIG
     4300016: Poui_R_Toes_Skin_RIG
-    7400000: Take 001
+    4300018: Poui_Mouse_Up_CTRL
+    4300020: Poui_MDL001
     9500000: //RootNode
-    13700000: Poui_MDL
+    13700000: //RootNode
+    13700002: Poui_MDL
   materials:
     importMaterials: 1
     materialName: 0
@@ -245,7 +251,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 1.5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -36,8 +36,14 @@ public class CameraSetUp : MonoBehaviour
         _perspective = Matrix4x4.Perspective(Fov, _aspect, Near, Far);
         _camera.projectionMatrix = _perspective;
 
+<<<<<<< HEAD
         GoToPerspective(0.2f);
         //GoToSide(0.2f);
+=======
+
+        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
+        ChangeCamera(13.61f, 0f, 1.2f);
+>>>>>>> refs/remotes/origin/Pierre
     }
 
     public void Update()

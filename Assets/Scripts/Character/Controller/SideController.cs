@@ -20,13 +20,29 @@ public class SideController : Controller
     public float StompingTime = 0.2f;
     public Ease JumpEase, StompingEase;
     public LayerMask Ground;
+    public float BlendSpeed;
+    public float RotationSpeed;
     private bool _isGrounded = false;
     private bool _isJumping = false;
     private bool _isGliding = false;
     private bool _isRolling = false;
     private bool _isStomping = false;
+    private bool _isDead = false;
     private MeshRenderer _mRend;
     private Tweener tn;
+
+    private Animator Anim;
+    private GameObject Poui;
+    private GameObject[] BabyPoui;
+    private Animator[] BabyAnim;
+    private SkinnedMeshRenderer skinnedMeshRenderer;
+    private float Blend = 0;
+    private bool BlendFinished = false;
+    private Vector3 rotation;
+    private GameObject Pivot;
+    private bool _isRotating = false;
+
+
     public override void OnTop()
     {
         if (_isJumping || _isGrounded || _isStomping)
@@ -57,6 +73,12 @@ public class SideController : Controller
         return;
     }
 
+    public void Bump(float JumpMultiplicator)
+    {
+        _isJumping = true;
+        _body.DOMoveY(JumpHeight * JumpMultiplicator, JumpTime).SetRelative().SetEase(JumpEase).OnComplete(() => _isJumping = false);
+    }
+
     public override void OnBotDown()
     {
         if (_isStomping || _isGrounded)
@@ -65,7 +87,20 @@ public class SideController : Controller
         _isRolling = true;
         _isStomping = true;
         _mRend.material.color = Color.green;
-        tn = DOTween.To(() => { return _body.velocity.y; }, x =>
+
+
+        if (!_isRotating)
+        {
+            _isRotating = true;
+            Poui.transform.DOScaleY(0.7f, BlendSpeed);
+            rotation = Poui.transform.rotation.eulerAngles;
+            Debug.Log(rotation);
+            rotation = new Vector3(rotation.x + RotationSpeed, 90, 0);
+            Debug.Log(rotation);
+            Pivot.transform.DORotate(rotation, 0.01f).SetLoops(-1, LoopType.Incremental);
+        }
+
+        DOTween.To(() => { return _body.velocity.y; }, x =>
         {
             Vector3 vel = _body.velocity;
             vel.y = x;
@@ -96,6 +131,19 @@ public class SideController : Controller
     {
         _body = GetComponent<Rigidbody>();
         _mRend = GetComponent<MeshRenderer>();
+        Pivot = transform.GetChild(0).gameObject;
+        Poui = Pivot.transform.GetChild(0).gameObject;
+        Anim = Poui.GetComponent<Animator>();
+        BabyPoui = new GameObject[3];
+        BabyAnim = new Animator[3];
+        for (int i = 0; i < 3; i++)
+        {
+            BabyPoui[i] = transform.GetChild(i + 1).gameObject;
+            BabyAnim[i] = BabyPoui[i].GetComponent<Animator>();
+        }
+        skinnedMeshRenderer = Poui.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
+
+        rotation = Poui.transform.rotation.eulerAngles;
     }
 
     void FixedUpdate()
@@ -112,6 +160,25 @@ public class SideController : Controller
     void Update()
     {
         checkGround();
+        Anim.SetBool("IsGliding", _isGliding);
+        Anim.SetBool("IsGrounded", _isGrounded);
+        Anim.SetBool("IsRolling", _isRolling);
+        Anim.SetBool("IsJumping", _isJumping);
+        Anim.SetBool("IsStomping", _isStomping);
+        Anim.SetBool("IsDead", _isDead);
+
+        if (!_isRolling)
+        {
+            _isRotating = false;
+            Poui.transform.DOScaleY(1, BlendSpeed);
+            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.5f);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            BabyAnim[i].SetBool("IsRolling", _isRolling);
+            BabyAnim[i].SetBool("IsJumping", _isJumping);
+        }
     }
 
     /// <summary>

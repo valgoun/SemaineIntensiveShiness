@@ -53,7 +53,9 @@ public class Character : MonoBehaviour
         _cam = Camera.main.GetComponent<CameraSetUp>();
         _lifePoints = TotalLifePoint;
 
+
         setActiveController(_topController, false);
+
     }
 
     // Update is called once per frame

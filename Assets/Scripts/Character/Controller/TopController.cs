@@ -24,6 +24,8 @@ public class TopController : Controller
     private Tween _rollingTween;
     private MeshRenderer _mRend;
 
+    private bool _isBoosting = false;
+
     void Start()
     {
         _body = GetComponent<Rigidbody>();
@@ -32,7 +34,7 @@ public class TopController : Controller
 
     public override void OnNoInput()
     {
-        if (!_isColliding)
+        if (!_isColliding && !_isBoosting)
         {
             _body.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.right, Vector3.up), StabilizationSpeed * Time.deltaTime));
             _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
@@ -209,13 +211,19 @@ public class TopController : Controller
     /// <param name="Direction"></param>
     public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction)
     {
-
+        _isBoosting = true;
         DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime);
         DOVirtual.DelayedCall(DecelerationTime + 0.1f, () =>
         {
-            Rotate(-Mathf.Atan(Direction.x / Direction.z) * 10000);
+            if (Direction.z != 0)
+            {
+                float rot = -Mathf.Atan(Direction.x / Direction.z) * 10000;
+                Rotate(rot);
+            }
             _speed = MaxRollSpeed;
             _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
+            _isRolling = true;
+            DOVirtual.DelayedCall(2f, () => _isBoosting = false);
         });
     }
 
