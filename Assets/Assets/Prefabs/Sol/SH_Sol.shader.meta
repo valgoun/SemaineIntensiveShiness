@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5cb7a8f0c0d4fd74c9d38baeca67894c
+timeCreated: 1476908527
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _Mousse: {fileID: 2800000, guid: 976f15af08ad2164d9bc4d72882ed52e, type: 3}
+  - _Rock: {fileID: 2800000, guid: ba510c00b0789674ab6850de773f469c, type: 3}
+  - _Noise: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+  - _Mousse_N: {fileID: 2800000, guid: 7a0afabecb6c49644aba88c9b044e68b, type: 3}
+  - _Rocks_Normal: {fileID: 2800000, guid: 3dc6e45a04329194b994dbeb1136a9c5, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

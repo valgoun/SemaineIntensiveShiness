@@ -175,13 +175,10 @@ public class TopController : Controller
         _velZ = _body.velocity.z;
     }
 
-    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, Vector3 posBooster)
+    public void Boost(float BoostSpeed, float DecelerationTime, float boostLock, Vector3 Direction, Vector3 posBooster)
     {
-<<<<<<< HEAD
         transform.position = posBooster;
-=======
         _isBoosting = true;
->>>>>>> 613eb84422f1742492cf8bda02fda977b4f17a7d
         DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime);
         DOVirtual.DelayedCall(DecelerationTime + 0.1f, () =>
         {
@@ -190,9 +187,11 @@ public class TopController : Controller
                 float rot = -Mathf.Atan(Direction.x / Direction.z) * 10000;
                 Rotate(rot);
             }
+            ResetRoll();
+            //Roll(ResetTime);
             _speed = MaxRollSpeed;
             _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
-            DOVirtual.DelayedCall(2f, () => _isBoosting = false);
+            DOVirtual.DelayedCall(boostLock, () => _isBoosting = false);
         });
     }
 }
