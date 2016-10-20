@@ -35,9 +35,6 @@ public class SideController : Controller
     private GameObject Poui;
     private GameObject[] BabyPoui;
     private Animator[] BabyAnim;
-    private SkinnedMeshRenderer skinnedMeshRenderer;
-    private float Blend = 0;
-    private bool BlendFinished = false;
     private Vector3 rotation;
     private GameObject Pivot;
     private bool _isRotating = false;
@@ -89,17 +86,6 @@ public class SideController : Controller
         _mRend.material.color = Color.green;
 
 
-        if (!_isRotating)
-        {
-            _isRotating = true;
-            Poui.transform.DOScaleY(0.7f, BlendSpeed);
-            rotation = Poui.transform.rotation.eulerAngles;
-            Debug.Log(rotation);
-            rotation = new Vector3(rotation.x + RotationSpeed, 90, 0);
-            Debug.Log(rotation);
-            Pivot.transform.DORotate(rotation, 0.01f).SetLoops(-1, LoopType.Incremental);
-        }
-
         DOTween.To(() => { return _body.velocity.y; }, x =>
         {
             Vector3 vel = _body.velocity;
@@ -141,7 +127,6 @@ public class SideController : Controller
             BabyPoui[i] = transform.GetChild(i + 1).gameObject;
             BabyAnim[i] = BabyPoui[i].GetComponent<Animator>();
         }
-        skinnedMeshRenderer = Poui.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
 
         rotation = Poui.transform.rotation.eulerAngles;
     }
@@ -167,11 +152,23 @@ public class SideController : Controller
         Anim.SetBool("IsStomping", _isStomping);
         Anim.SetBool("IsDead", _isDead);
 
+        if (!_isRotating && _isRolling)
+        {
+            Poui.transform.DOScaleY(0.7f, BlendSpeed);
+            rotation = Poui.transform.rotation.eulerAngles;
+            Debug.Log(rotation);
+            rotation = new Vector3(rotation.x + RotationSpeed * Time.deltaTime, 90, 0);
+            Debug.Log(rotation);
+            Pivot.transform.Rotate(rotation);
+            _isRotating = true;
+        }
+
         if (!_isRolling)
         {
             _isRotating = false;
             Poui.transform.DOScaleY(1, BlendSpeed);
-            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.5f);
+            rotation = Poui.transform.rotation.eulerAngles;
+            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.001f);
         }
 
         for (int i = 0; i < 3; i++)
