@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpeedModifier : MonoBehaviour
 {
     [TooltipAttribute("The speed of the player will be modified by the ModifierAmount until the player stay in the zone")]
+    [Range(-1f, 1f)]
     public float ModifierAmount = 5f;
 
     /// <summary>

@@ -142,13 +142,13 @@ public class TopController : Controller
     {
         if (!_body)
             return;
-        if (_body.velocity.magnitude < (_speed + _alterationSpeed))
+        if (_body.velocity.magnitude < (_speed * (1 + _alterationSpeed)))
         {
             _body.AddForce(transform.forward * Acceleration, ForceMode.Acceleration);
         }
         else
         {
-            _body.velocity = _body.velocity.normalized * (_speed + _alterationSpeed);
+            _body.velocity = _body.velocity.normalized * (_speed * (1 + _alterationSpeed));
         }
 
     }

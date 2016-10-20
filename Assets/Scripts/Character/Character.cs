@@ -51,6 +51,7 @@ public class Character : MonoBehaviour
         _sideController.enabled = false;
         _body = GetComponent<Rigidbody>();
         _cam = Camera.main.GetComponent<CameraSetUp>();
+        _lifePoints = TotalLifePoint;
 
         setActiveController(_topController, false);
     }
