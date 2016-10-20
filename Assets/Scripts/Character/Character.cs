@@ -34,6 +34,12 @@ public class Character : MonoBehaviour
     private float _lifePoints;
     private float _coins;
     private static Character _mainCharacter;
+    public float RollingSpeed;
+    public float BlendSpeed;
+
+    private Vector3 rotation;
+    private GameObject Poui;
+    private GameObject Pivot;
 
 
     // Use this for initialization
@@ -57,6 +63,9 @@ public class Character : MonoBehaviour
 
         setActiveController(_topController, false);
 
+        Pivot = transform.GetChild(0).gameObject;
+        Poui = Pivot.transform.GetChild(0).gameObject;
+        rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RollingSpeed * Time.deltaTime, 0, 0);
     }
 
     // Update is called once per frame
@@ -85,6 +94,15 @@ public class Character : MonoBehaviour
         if (transform.position.y < deathLevel)
         {
             Debug.Log("DEATH!!!");
+        }
+
+        if (_activeController.IsRolling())
+        {
+            Poui.transform.DOScaleY(0.7f, BlendSpeed);
+            Pivot.transform.Rotate(rotation);
+        } else {
+            Poui.transform.DOScaleY(1, BlendSpeed);
+            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
         }
     }
 
