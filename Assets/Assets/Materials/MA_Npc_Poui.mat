@@ -42,7 +42,7 @@ Material:
     - first:
         name: _Diffuse
       second:
-        m_Texture: {fileID: 2800000, guid: 96fadff32459a114792210a5b2f08083, type: 3}
+        m_Texture: {fileID: 2800000, guid: 383a29c1a5d7e0640965e3b11aaf91d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -64,6 +64,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _NormalMap
+      second:
+        m_Texture: {fileID: 2800000, guid: a49cadfb075511e4da3fed7666422f9b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _OcclusionMap
       second:
         m_Texture: {fileID: 0}
@@ -79,6 +85,12 @@ Material:
         name: _ShadowRamp
       second:
         m_Texture: {fileID: 2800000, guid: 394b5377907317b4fb87478d6af8ba5e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_3759
+      second:
+        m_Texture: {fileID: 2800000, guid: a49cadfb075511e4da3fed7666422f9b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -102,10 +114,10 @@ Material:
       second: 0
     - first:
         name: _Emission
-      second: 2.2
+      second: 2.01
     - first:
         name: _FresnelPower
-      second: 2.8
+      second: 50
     - first:
         name: _GlossMapScale
       second: 1
@@ -126,13 +138,13 @@ Material:
       second: 1
     - first:
         name: _OutlineWidth
-      second: 0
+      second: 0.94
     - first:
         name: _Parallax
       second: 0.02
     - first:
         name: _RampAdjustement
-      second: -0.45
+      second: -0.281
     - first:
         name: _RampStrength
       second: 1
@@ -178,4 +190,4 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _RimColor
-      second: {r: 0.012435121, g: 0.110766925, b: 0.16911763, a: 0.428}
+      second: {r: 0.375, g: 0.33985803, b: 0.14338236, a: 0.428}

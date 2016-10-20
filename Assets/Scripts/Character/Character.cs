@@ -176,7 +176,7 @@ public class Character : MonoBehaviour
         if (_lifePoints <= 0.0f)
         {
             _lifePoints = 0.0f;
-            //TODO : Death
+            Dead();
         }
     }
 

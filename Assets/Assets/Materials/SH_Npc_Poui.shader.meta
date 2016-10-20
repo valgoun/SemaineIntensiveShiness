@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: f4c265eb9799a4048861b14a0f191292
-timeCreated: 1476908229
-licenseType: Free
+timeCreated: 1476965391
+licenseType: Pro
 ShaderImporter:
   defaultTextures:
+  - _Diffuse: {fileID: 2800000, guid: 96fadff32459a114792210a5b2f08083, type: 3}
   - _ShadowRamp: {fileID: 2800000, guid: 394b5377907317b4fb87478d6af8ba5e, type: 3}
+  - _NormalMap: {fileID: 2800000, guid: a49cadfb075511e4da3fed7666422f9b, type: 3}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

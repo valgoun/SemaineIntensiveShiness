@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CercleMagique : MonoBehaviour
 {
@@ -8,15 +6,6 @@ public class CercleMagique : MonoBehaviour
     public float DecelerationTime;
     public float NoStabilisationTime = 0.2f;
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 
     public void OnTriggerEnter(Collider other)
     {
