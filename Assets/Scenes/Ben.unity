@@ -633,10 +633,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundDistance: 0.6
   JumpHeight: 10
-  JumpTime: 0.2
+  JumpTime: 0.4
   GlidingVerticalSpeed: 0.5
   Speed: 15
-  RollingSpeed: 30
+  RollingSpeed: 25
   StompingSpeed: 55
   StompingTime: 0.2
   JumpEase: 21
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 190656309}
   SmoothTime: 0.1
-  OffSet: {x: 0, y: 0, z: 0}
+  OffSet: {x: 10, y: 0, z: 0}
 --- !u!4 &594941540 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4415056760098118, guid: 1e54a08fc3dd4e048b61213e6d2af321,
@@ -4344,8 +4344,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4385,7 +4385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 13.61
   Angle: 0
-  OrthographicSize: 7.5
+  OrthographicSize: 10
   Fov: 60
   Near: 0.3
   Far: 1000
