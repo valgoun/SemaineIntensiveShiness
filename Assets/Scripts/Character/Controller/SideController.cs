@@ -21,6 +21,11 @@ public class SideController : Controller
     private bool _isRolling = false;
     private bool _isStomping = false;
     private MeshRenderer _mRend;
+    private Animator Anim;
+    private GameObject Poui;
+    private GameObject[] BabyPoui;
+    private Animator[] BabyAnim;
+
     public override void OnTop()
     {
         if (_isJumping || _isGrounded || _isStomping)
@@ -46,10 +51,17 @@ public class SideController : Controller
         return;
     }
 
+    public void Bump(float JumpMultiplicator)
+    {
+        _isJumping = true;
+        _body.DOMoveY(JumpHeight * JumpMultiplicator, JumpTime).SetRelative().SetEase(JumpEase).OnComplete(() => _isJumping = false);
+    }
+
     public override void OnBotDown()
     {
         if (_isStomping)
             return;
+		//Anim.SetTrigger("Stomp");
         _body.DOKill();
         _isRolling = true;
         _isStomping = true;
@@ -85,6 +97,18 @@ public class SideController : Controller
     {
         _body = GetComponent<Rigidbody>();
         _mRend = GetComponent<MeshRenderer>();
+        Poui = transform.GetChild(0).gameObject;
+        Anim = Poui.GetComponent<Animator>();
+        BabyPoui = new GameObject[3];
+        BabyAnim = new Animator[3];
+        for (int i = 0; i < 3; i++)
+        {
+            /*
+            BabyPoui[i] = transform.GetChild(i + 1).gameObject;
+            BabyAnim[i] = BabyPoui[i].GetComponent<Animator>();
+            */
+        }
+
     }
 
     void FixedUpdate()
@@ -101,6 +125,18 @@ public class SideController : Controller
     void Update()
     {
         checkGround();
+        //Debug.Log(_isGrounded + " " + _isGliding);
+        /*
+		Anim.SetBool("IsGliding", _isGliding);
+        Anim.SetBool("IsGrounded", _isGrounded);
+        Anim.SetBool("IsRolling", _isRolling);
+        Anim.SetBool("IsJumping", _isJumping);
+		*/
+        for(int i=0; i<3; i++)
+        {
+            /*BabyAnim[i].SetBool("IsRunning", _isGrounded);*/
+        }
+        //Debug.Log(_isGrounded + " " + _isGliding);
     }
 
 

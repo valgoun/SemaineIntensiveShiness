@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     void Update()
     {
         bool inputEvent = false;
+
         //Inputs
         if (Input.GetKeyDown(KeyCode.UpArrow))
             _onTopDown();
