@@ -86,7 +86,7 @@ public class SideController : Controller
         _mRend.material.color = Color.green;
 
 
-        DOTween.To(() => { return _body.velocity.y; }, x =>
+        tn = DOTween.To(() => { return _body.velocity.y; }, x =>
         {
             Vector3 vel = _body.velocity;
             vel.y = x;
@@ -188,7 +188,10 @@ public class SideController : Controller
         RaycastHit hit;
         _isGrounded = Physics.Raycast(r, out hit, GroundDistance, Ground);
         if (_isGrounded && _isStomping)
+        {
             _isStomping = false;
+        }
+        _isJumping = false;
     }
 
     public override bool IsRolling()
