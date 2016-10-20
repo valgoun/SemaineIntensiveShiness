@@ -37,8 +37,6 @@ public class SideController : Controller
     private Animator[] BabyAnim;
     private Vector3 rotation;
     private GameObject Pivot;
-    private bool _isRotating = false;
-
 
     public override void OnTop()
     {
@@ -119,8 +117,7 @@ public class SideController : Controller
     {
         _body = GetComponent<Rigidbody>();
         _mRend = GetComponent<MeshRenderer>();
-        Pivot = transform.GetChild(0).gameObject;
-        Poui = Pivot.transform.GetChild(0).gameObject;
+        Poui = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         Anim = Poui.GetComponent<Animator>();
         BabyPoui = new GameObject[3];
         BabyAnim = new Animator[3];
@@ -129,8 +126,6 @@ public class SideController : Controller
             BabyPoui[i] = transform.GetChild(i + 1).gameObject;
             BabyAnim[i] = BabyPoui[i].GetComponent<Animator>();
         }
-
-        rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RotationSpeed * Time.deltaTime, 0, 0);
     }
 
     void FixedUpdate()
@@ -153,18 +148,6 @@ public class SideController : Controller
         Anim.SetBool("IsJumping", _isJumping);
         Anim.SetBool("IsStomping", _isStomping);
         Anim.SetBool("IsDead", _isDead);
-
-        if (_isRolling)
-        {
-            Poui.transform.DOScaleY(0.7f, BlendSpeed);
-            Pivot.transform.Rotate(rotation);
-        }
-
-        if (!_isRolling)
-        {
-            Poui.transform.DOScaleY(1, BlendSpeed);
-            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
-        }
 
         for (int i = 0; i < 3; i++)
         {

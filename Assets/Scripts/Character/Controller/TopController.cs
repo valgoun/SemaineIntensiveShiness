@@ -25,24 +25,16 @@ public class TopController : Controller
     private MeshRenderer _mRend;
 
     private bool _isBoosting = false;
-
-    public float RollingSpeed;
-    public float BlendSpeed;
-
-    private Vector3 rotation;
+    
     private GameObject Poui;
-    private GameObject Pivot;
     private Animator Anim;
-    private bool _isDead;
 
     void Start()
     {
         _body = GetComponent<Rigidbody>();
         _mRend = GetComponent<MeshRenderer>();
-
-        Pivot = transform.GetChild(0).gameObject;
-        Poui = Pivot.transform.GetChild(0).gameObject;
-        rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RollingSpeed * Time.deltaTime, 0, 0);
+        
+        Poui = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         Anim = Poui.GetComponent<Animator>();
     }
 
@@ -171,19 +163,6 @@ public class TopController : Controller
     void Update()
     {
         Anim.SetBool("IsRolling", _isRolling);
-        Anim.SetBool("IsDead", _isDead);
-
-        if (_isRolling)
-        {
-            Poui.transform.DOScaleY(0.7f, BlendSpeed);
-            Pivot.transform.Rotate(rotation);
-        }
-
-        if (!_isRolling)
-        {
-            Poui.transform.DOScaleY(1, BlendSpeed);
-            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
-        }
     }
 
     void OnCollisionExit(Collision other)
