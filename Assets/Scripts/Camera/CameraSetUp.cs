@@ -38,12 +38,6 @@ public class CameraSetUp : MonoBehaviour
 
         GoToPerspective(0.2f);
         //GoToSide(0.2f);
-
-<<<<<<< HEAD
-=======
-        //StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, 1.2f));
-        //ChangeCamera(13.61f, 0f, 1.2f);
->>>>>>> refs/remotes/origin/Pierre
     }
 
     public void Update()
