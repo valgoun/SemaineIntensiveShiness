@@ -4052,7 +4052,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620730387685070}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.82, z: -57}
+  m_LocalPosition: {x: 0, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4574918435758124}
@@ -7481,7 +7481,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!95 &95362398163712510
 Animator:
   serializedVersion: 3
@@ -7585,15 +7585,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroundDistance: 0.6
-  JumpHeight: 5
-  JumpTime: 0.2
+  JumpHeight: 10
+  JumpTime: 0.6
   GlidingVerticalSpeed: 0.5
-  Speed: 10
-  RollingSpeed: 16
+  Speed: 15
+  RollingSpeed: 25
   StompingSpeed: 55
   StompingTime: 0.2
-  JumpEase: 0
-  StompingEase: 0
+  JumpEase: 21
+  StompingEase: 21
   Ground:
     serializedVersion: 2
     m_Bits: 256

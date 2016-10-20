@@ -241,7 +241,7 @@ public class TopController : Controller
     /// <param name="BoostSpeed"></param>
     /// <param name="DecelerationTime"></param>
     /// <param name="Direction"></param>
-    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction)
+    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, float NoStabilisationTime)
     {
         _isBoosting = true;
         DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime);
@@ -255,7 +255,7 @@ public class TopController : Controller
             _speed = MaxRollSpeed;
             _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
             _isRolling = true;
-            DOVirtual.DelayedCall(2f, () => _isBoosting = false);
+            DOVirtual.DelayedCall(NoStabilisationTime, () => _isBoosting = false);
         });
     }
 

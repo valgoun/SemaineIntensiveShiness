@@ -6,7 +6,8 @@ public class CercleMagique : MonoBehaviour
 {
     public float BoostSpeed;
     public float DecelerationTime;
-    
+    public float NoStabilisationTime = 0.2f;
+
     void Start()
     {
 
@@ -21,7 +22,7 @@ public class CercleMagique : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<TopController>().Boost(BoostSpeed, DecelerationTime, transform.right);
+            other.GetComponent<TopController>().Boost(BoostSpeed, DecelerationTime, transform.right, NoStabilisationTime);
         }
     }
 }
