@@ -78,10 +78,12 @@ public class SideController : Controller
 
     public override void OnBotDown()
     {
-        if (_isStomping || _isGrounded)
+        if (_isStomping)
             return;
-        _body.DOKill();
         _isRolling = true;
+        if(_isGrounded)
+        return;
+        _body.DOKill();
         _isStomping = true;
         _mRend.material.color = Color.green;
 

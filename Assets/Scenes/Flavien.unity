@@ -4339,50 +4339,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1620730387685070, guid: 0b6eddbb265d288409434fa59210c1e4, type: 2}
-      propertyPath: m_Name
-      value: Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: JumpHeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: JumpTime
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: Speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: RollingSpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: StompingSpeed
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: JumpEase
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357356968799514, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: StompingEase
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 137261977852059564, guid: 0b6eddbb265d288409434fa59210c1e4,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 56044e96afb810d4c83ba11bdca76b37, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b6eddbb265d288409434fa59210c1e4, type: 2}
   m_IsPrefabParent: 0
