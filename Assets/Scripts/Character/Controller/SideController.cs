@@ -28,7 +28,6 @@ public class SideController : Controller
     private bool _isRolling = false;
     private bool _isStomping = false;
     private bool _isDead = false;
-    private MeshRenderer _mRend;
     private Tweener tn;
 
     private Animator Anim;
@@ -42,7 +41,6 @@ public class SideController : Controller
             return;
         _isGliding = true;
         _isRolling = false;
-        _mRend.material.color = Color.red;
     }
 
     public override void OnBot()
@@ -81,7 +79,6 @@ public class SideController : Controller
             return;
         _body.DOKill();
         _isStomping = true;
-        _mRend.material.color = Color.green;
 
 
         tn = DOTween.To(() => { return _body.velocity.y; }, x =>
@@ -114,7 +111,6 @@ public class SideController : Controller
     void Start()
     {
         _body = GetComponent<Rigidbody>();
-        _mRend = GetComponent<MeshRenderer>();
         Poui = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         Anim = Poui.GetComponent<Animator>();
     }

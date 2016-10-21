@@ -131,7 +131,6 @@ public class TopController : Controller
             return;
         _isRolling = false;
         _speed = MaxRunSpeed;
-        _mRend.material.color = Color.red;
         DOVirtual.DelayedCall(TimeBetweenRoll, () => Roll(ResetTime));
     }
 
@@ -143,7 +142,6 @@ public class TopController : Controller
     {
         _isRolling = true;
         _speed = MaxRollSpeed;
-        _mRend.material.color = Color.green;
         _rollingTween = DOVirtual.DelayedCall(time, () => WaitForRoll()).SetDelay(RollingInitialTime - ResetTime);
     }
     /// <summary>
@@ -260,6 +258,10 @@ public class TopController : Controller
 
     public override void Disable()
     {
+        Vector3 rotation = transform.rotation.eulerAngles; ;
+        rotation.y = 0;
+        _body.MoveRotation(Quaternion.Euler(rotation));
+        _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
         _rollingTween.Kill(false);
     }
 
