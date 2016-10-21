@@ -253,7 +253,7 @@ public class TopController : Controller
             }
             _speed = MaxRollSpeed;
             _body.AddForce(Direction * BoostSpeed, ForceMode.VelocityChange);
-            _isRolling = true;
+            ResetRoll();
             DOVirtual.DelayedCall(NoStabilisationTime, () => _isBoosting = false);
         });
     }
