@@ -127,8 +127,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680708919513630}
-  m_LocalRotation: {x: -0.66625404, y: 0.23686612, z: 0.23686612, w: 0.66625404}
-  m_LocalPosition: {x: 565.98413, y: 0.41977474, z: -60.926865}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -222.87735, y: -2.2593272, z: -1.8611526}
   m_LocalScale: {x: 7.165773, y: 7.165771, z: 7.165771}
   m_Children:
   - {fileID: 4134050813443578}
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 0}
+  biteSound: {fileID: 0}
+  timeAllowedBetweenSeeds: 0.5
 --- !u!135 &135564790382040570
 SphereCollider:
   m_ObjectHideFlags: 1
