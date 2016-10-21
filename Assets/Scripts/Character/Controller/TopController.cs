@@ -25,16 +25,24 @@ public class TopController : Controller
     private MeshRenderer _mRend;
 
     private bool _isBoosting = false;
-    
+
+    public float RollingSpeed;
+    public float BlendSpeed;
+
+    private Vector3 rotation;
     private GameObject Poui;
+    private GameObject Pivot;
     private Animator Anim;
+    private bool _isDead;
 
     void Start()
     {
         _body = GetComponent<Rigidbody>();
         _mRend = GetComponent<MeshRenderer>();
-        
-        Poui = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+
+        Pivot = transform.GetChild(0).gameObject;
+        Poui = Pivot.transform.GetChild(0).gameObject;
+        rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RollingSpeed * Time.deltaTime, 0, 0);
         Anim = Poui.GetComponent<Animator>();
     }
 
@@ -163,6 +171,19 @@ public class TopController : Controller
     void Update()
     {
         Anim.SetBool("IsRolling", _isRolling);
+        Anim.SetBool("IsDead", _isDead);
+
+        if (_isRolling)
+        {
+            Poui.transform.DOScaleY(0.7f, BlendSpeed);
+            Pivot.transform.Rotate(rotation);
+        }
+
+        if (!_isRolling)
+        {
+            Poui.transform.DOScaleY(1, BlendSpeed);
+            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
+        }
     }
 
     void OnCollisionExit(Collision other)
@@ -220,10 +241,16 @@ public class TopController : Controller
     /// <param name="BoostSpeed"></param>
     /// <param name="DecelerationTime"></param>
     /// <param name="Direction"></param>
-    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, float NoStabilisationTime)
+    public void Boost(float BoostSpeed, float DecelerationTime, Vector3 Direction, float NoStabilisationTime, Vector3 pos)
     {
         _isBoosting = true;
-        DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime);
+        pos.y = transform.position.y;
+
+        DOTween.To(() => { return _speed; }, x => _speed = x, 0, DecelerationTime).OnComplete(() =>
+        {
+            transform.position = pos;
+        });
+
         DOVirtual.DelayedCall(DecelerationTime + 0.1f, () =>
         {
             if (Direction.z != 0)

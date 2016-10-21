@@ -126,7 +126,7 @@ Material:
       second: 1
     - first:
         name: _OutlineWidth
-      second: 0
+      second: 1.86
     - first:
         name: _Parallax
       second: 0.02
@@ -178,4 +178,4 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _RimColor
-      second: {r: 0.012435121, g: 0.110766925, b: 0.16911763, a: 0.428}
+      second: {r: 0.375, g: 0.33985803, b: 0.14338236, a: 0.428}

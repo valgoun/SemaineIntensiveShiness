@@ -5,9 +5,11 @@ using System.Collections;
 [RequireComponent(typeof(Text))]
 public class ShakeText : MonoBehaviour {
 
+    [SerializeField]
+    Color fontColor;
 	float shakeTime = 0.2f;
 	float shakeIntensity = 20;
-	int fontBig = 80;
+	int fontBig = 180;
 	int fontSize;
 	Text disp;
 
@@ -26,7 +28,8 @@ public class ShakeText : MonoBehaviour {
 
 			Vector3 rot = Vector3.forward * Random.Range (-shakeIntensity, shakeIntensity);
 			disp.rectTransform.rotation = Quaternion.Euler (rot);
-			disp.fontSize = Random.Range (fontSize, fontBig);
+			disp.fontSize = (int)Mathf.Lerp(fontBig, fontSize, percent);
+            disp.color = Color.Lerp(fontColor, Color.white, percent);
 			yield return null;
 		}
 		disp.fontSize = fontSize;

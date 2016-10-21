@@ -2,6 +2,7 @@
 using System.Collections;
 using DG.Tweening;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -93,14 +94,16 @@ public class Character : MonoBehaviour
 
         if (transform.position.y < deathLevel)
         {
-            Debug.Log("DEATH!!!");
+            Dead();
         }
 
         if (_activeController.IsRolling())
         {
             Poui.transform.DOScaleY(0.7f, BlendSpeed);
             Pivot.transform.Rotate(rotation);
-        } else {
+        }
+        else
+        {
             Poui.transform.DOScaleY(1, BlendSpeed);
             Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
         }
@@ -173,8 +176,13 @@ public class Character : MonoBehaviour
         if (_lifePoints <= 0.0f)
         {
             _lifePoints = 0.0f;
-            //TODO : Death
+            Dead();
         }
+    }
+
+    private void Dead()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
