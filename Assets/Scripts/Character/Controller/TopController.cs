@@ -258,6 +258,10 @@ public class TopController : Controller
 
     public override void Disable()
     {
+        Vector3 rotation = transform.rotation.eulerAngles; ;
+        rotation.y = 0;
+        _body.MoveRotation(Quaternion.Euler(rotation));
+        _body.velocity = Vector3.RotateTowards(_body.velocity.normalized, transform.forward, 1.5f, 200).normalized * _body.velocity.magnitude;
         _rollingTween.Kill(false);
     }
 
