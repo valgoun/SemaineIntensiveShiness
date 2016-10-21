@@ -7,6 +7,7 @@ public class DamageZone : MonoBehaviour
 
     public float Damages;
 
+
     /// <summary>
     /// OnTriggerEnter is called when the Collider other enters the trigger.
     /// </summary>

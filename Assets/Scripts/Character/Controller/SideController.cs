@@ -22,6 +22,7 @@ public class SideController : Controller
     public LayerMask Ground;
     public float BlendSpeed;
     public float RotationSpeed;
+    public AudioSource jumpSound;
     private bool _isGrounded = false;
     private bool _isJumping = false;
     private bool _isGliding = false;
@@ -53,6 +54,9 @@ public class SideController : Controller
     {
         if (_isGrounded && !_isStomping)
         {
+            jumpSound.pitch = 0.9f;
+            jumpSound.Play();
+            jumpSound.pitch = 1.1f;
             _isJumping = true;
             _body.DOMoveY(JumpHeight, JumpTime).SetRelative().SetEase(JumpEase).OnComplete(() => _isJumping = false);
             if (tn != null)
@@ -94,6 +98,7 @@ public class SideController : Controller
     {
         Start();
         _body.useGravity = true;
+        _body.constraints = RigidbodyConstraints.FreezePositionZ;
     }
 
     public override void OnNoInput()
@@ -160,6 +165,7 @@ public class SideController : Controller
 
     public override void Disable()
     {
+        _body.constraints = RigidbodyConstraints.None;
         //nothing to do when disable
     }
 }

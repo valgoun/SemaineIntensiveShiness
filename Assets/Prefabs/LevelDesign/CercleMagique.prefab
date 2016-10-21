@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4110186178224734}
   - component: {fileID: 65196011431032214}
   - component: {fileID: 114220845422086156}
+  - component: {fileID: 82057722185553244}
   m_Layer: 0
   m_Name: CercleMagique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1761667087051618
 GameObject:
@@ -44,7 +45,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1929575881375912
 GameObject:
@@ -62,7 +63,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4110186178224734
 Transform:
@@ -70,15 +71,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346237672107492}
-  m_LocalRotation: {x: -0, y: 0.38132498, z: -0, w: 0.92444116}
-  m_LocalPosition: {x: 266.076, y: 1.17, z: -50.343}
+  m_LocalRotation: {x: -0, y: 0.5364619, z: -0, w: 0.8439246}
+  m_LocalPosition: {x: -5.4452515, y: 1.4286708, z: 6.052516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4463036710174156}
   - {fileID: 4668204143792616}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 64.886, z: 0}
 --- !u!4 &4463036710174156
 Transform:
   m_ObjectHideFlags: 1
@@ -193,6 +194,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -0.5, y: 0, z: 0}
+--- !u!82 &82057722185553244
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346237672107492}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243302758611825708, guid: 5dc7fffe0ec49e54ba5bedf5b41bb612,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 3e29069c11a31fe4a8e3fafe885ffc61, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95244172426967994
 Animator:
   serializedVersion: 3
@@ -240,4 +322,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoostSpeed: 100
   DecelerationTime: 0
-  NoStabilisationTime: 0.2
+  NoStabilisationTime: 0.5
+  boostSound: {fileID: 82057722185553244}

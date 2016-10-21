@@ -96,7 +96,7 @@ Material:
       second: 1
     - first:
         name: _Glow_intensity
-      second: 1.912294
+      second: 3.44
     - first:
         name: _Metallic
       second: 0
@@ -139,4 +139,4 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _Glow_color
-      second: {r: 0.8676471, g: 0.7001014, b: 0.1531142, a: 1}
+      second: {r: 1, g: 0.8103448, b: 0.19117647, a: 1}

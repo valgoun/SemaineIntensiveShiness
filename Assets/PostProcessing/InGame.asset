@@ -40,8 +40,8 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 1
-      radius: 0.3
+      intensity: 2
+      radius: 0.49
       sampleCount: 10
       downsampling: 1
       ambientOnly: 1
@@ -70,9 +70,9 @@ MonoBehaviour:
   motionBlur:
     m_Enabled: 1
     m_Settings:
-      shutterAngle: 270
+      shutterAngle: 174
       sampleCount: 10
-      maxBlurRadius: 5
+      maxBlurRadius: 2.3
       frameBlending: 0
   eyeAdaptation:
     m_Enabled: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
       bloom:
         intensity: 0.5
         threshold: 1.1
-        softKnee: 0.479
+        softKnee: 0.556
         radius: 3.68
         antiFlicker: 0
       lensDirt:
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       tonemapping:
-        tonemapper: 2
+        tonemapper: 1
         neutralBlackIn: 0.0308
         neutralWhiteIn: 10
         neutralBlackOut: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
           power: {r: 1, g: 1, b: 1, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
-          lift: {r: 0.9958365, g: 0.9916722, b: 1, a: 0}
+          lift: {r: 1, g: 0, b: 0.8862672, a: 0}
           gamma: {r: 1, g: 1, b: 1, a: 0}
           gain: {r: 1, g: 1, b: 1, a: 0}
       curves:

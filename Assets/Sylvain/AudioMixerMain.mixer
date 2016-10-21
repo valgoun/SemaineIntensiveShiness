@@ -24,6 +24,7 @@ AudioMixerController:
     - dd86f5a9c74ce614a83eba7ec4f8cbc7
     - fdc303081c8a2b84487aa1e48a164dee
     - 228f899d776f27444af86624437ca040
+    - 5987befd927e0cd4180454ea2594dce1
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -42,6 +43,7 @@ AudioMixerGroupController:
   - {fileID: 243689668565593406}
   - {fileID: 243498486107124216}
   - {fileID: 243302758611825708}
+  - {fileID: 243997081801875936}
   m_Volume: e54282d94bee7ca49ba0ec7183d270dc
   m_Pitch: b919a34fddce28e4c93b24c1fb127d1a
   m_Effects:
@@ -75,8 +77,10 @@ AudioMixerSnapshotController:
     ccc2b0d0cb50b7f44a648ab7b287d2b9: -6.2040687
     70e26d511cc59d1449764c4d187d4932: 5.545087
     99b41202142145a4384928580ea24daa: 14.112627
+    6c34ea164dc47df4f8c0dd9afeefc892: 14.9016905
     a892c8563b4777246b5c45c005783bc2: -5.3230753
     ead58d1b38efe024f8ad5cad58a0b016: -4.560346
+    c4f0f68bdb4bd2544b96bd87ba3d4acc: 2.090601
   m_TransitionOverrides: {}
 --- !u!243 &243302758611825708
 AudioMixerGroupController:
@@ -180,6 +184,36 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243997081801875936
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ronce
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 5987befd927e0cd4180454ea2594dce1
+  m_Children: []
+  m_Volume: 6c34ea164dc47df4f8c0dd9afeefc892
+  m_Pitch: a47e73aa18811f34199890232a1d1c9e
+  m_Effects:
+  - {fileID: 244151987995088476}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244151987995088476
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 74635f4a956976744b28b0f53ddb2ded
+  m_EffectName: Attenuation
+  m_MixLevel: fdba6b8f3fe9b72418688893ffa26950
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244499374539381182
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

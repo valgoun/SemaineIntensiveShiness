@@ -99,13 +99,13 @@ Material:
       second: 1
     - first:
         name: _Diffuseambient_power
-      second: 0.113
+      second: 0.299
     - first:
         name: _DstBlend
       second: 0
     - first:
         name: _EmissionPower
-      second: 0.353
+      second: 0.491
     - first:
         name: _GlossMapScale
       second: 1
@@ -144,7 +144,7 @@ Material:
       second: 1
     - first:
         name: _node_3424
-      second: 11.8
+      second: 12.6
     m_Colors:
     - first:
         name: _Color

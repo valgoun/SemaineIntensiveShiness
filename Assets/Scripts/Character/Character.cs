@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Character : MonoBehaviour
 {
     public float TotalLifePoint;
+    public AudioSource cri, ronce;
     public static Character MainCharacter
     {
         get
@@ -200,6 +201,9 @@ public class Character : MonoBehaviour
     /// <param name="amount">how many life point will the character loose</param>
     public void DealDamages(float amount)
     {
+        cri.Play();
+        ronce.Play();
+
         if (!_canLoosePDV)
             return;
         _lifePoints -= amount;

@@ -5160,7 +5160,6 @@ GameObject:
   - component: {fileID: 33671391835432556}
   - component: {fileID: 23763810602883318}
   - component: {fileID: 114534762831813420}
-  - component: {fileID: 114357356968799514}
   - component: {fileID: 114174703219551044}
   - component: {fileID: 54585696703167632}
   - component: {fileID: 135393804026962448}
@@ -17617,34 +17616,9 @@ MonoBehaviour:
   RollingInitialTime: 5
   ResetTime: 0.2
   MinimalBounce: 25
+  audioBounce: {fileID: 0}
   RollingSpeed: 2000
   BlendSpeed: 0
---- !u!114 &114357356968799514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620730387685070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f6f358b685448340a3f2979b7e699c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GroundDistance: 0.6
-  JumpHeight: 10
-  JumpTime: 0.6
-  GlidingVerticalSpeed: 0.5
-  Speed: 15
-  RollingSpeed: 25
-  StompingSpeed: 40
-  StompingTime: 0.2
-  JumpEase: 21
-  StompingEase: 21
-  Ground:
-    serializedVersion: 2
-    m_Bits: 256
-  BlendSpeed: 0.3
-  RotationSpeed: 18
 --- !u!114 &114534762831813420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17657,9 +17631,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalLifePoint: 6
+  cri: {fileID: 0}
+  ronce: {fileID: 0}
   deathLevel: -20
   RollingSpeed: 2000
   BlendSpeed: 0.3
+  menuGameover: {fileID: 0}
 --- !u!135 &135393804026962448
 SphereCollider:
   m_ObjectHideFlags: 1
