@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
     private Transform _lifePointsPui;
     private bool _canLoosePDV = true;
     private bool _isDead = false;
-
+    public MenuGameover menuGameover;
 
     // Use this for initialization
     /// <summary>
@@ -225,8 +225,20 @@ public class Character : MonoBehaviour
         ScreenColor.Img.DOFade(1, 1f).OnComplete(() =>
         {
             Seed.collected = 0;
-            SceneManager.LoadScene(0);
+            menuGameover.AppearDeath();
         }).SetEase(Ease.InCirc);
+    }
+
+    public void Victory()
+    {
+        _isDead = true;
+        _isDead = true;
+        _body.velocity = Vector3.zero + Vector3.up * _body.velocity.y;
+
+        ScreenColor.Img.color = new Color(1, 0.5f, 0.5f, 0);
+        ScreenColor.Img.DOFade(1, 1f).SetEase(Ease.InCirc);
+        menuGameover.SelectDefaultButtonWin();
+        menuGameover.AppearWin();
     }
 
 }
