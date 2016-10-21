@@ -41,6 +41,8 @@ public class Character : MonoBehaviour
     private Vector3 rotation;
     private GameObject Poui;
     private GameObject Pivot;
+    private Animator Anim;
+    private bool FirstRoll = true;
 
     private Transform _lifePointsPui;
     private bool _canLoosePDV = true;
@@ -72,6 +74,7 @@ public class Character : MonoBehaviour
         Pivot = transform.GetChild(0).gameObject;
         Poui = Pivot.transform.GetChild(0).gameObject;
         rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RollingSpeed * Time.deltaTime, 0, 0);
+        Anim = Poui.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -106,11 +109,18 @@ public class Character : MonoBehaviour
 
         if (_activeController.IsRolling())
         {
+            if (FirstRoll)
+            {
+                this.gameObject.transform.DORotate(new Vector3(0, 90, 0), 0.01f);
+                Pivot.transform.DORotate(new Vector3(0, 0, 0), 0.01f);
+                FirstRoll = false;
+            }
             Poui.transform.DOScaleY(0.7f, BlendSpeed);
             Pivot.transform.Rotate(rotation);
         }
         else
         {
+            FirstRoll = true;
             Poui.transform.DOScaleY(1, BlendSpeed);
             Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
         }
@@ -139,6 +149,7 @@ public class Character : MonoBehaviour
 
     public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed, float RunJumpForce, float RollJumpForce)
     {
+        Anim.SetBool("IsSide", true);
         if (!_activeController.IsRolling())
         {
             disableController();
@@ -163,6 +174,12 @@ public class Character : MonoBehaviour
 
     public void goTopView(Transform target, float speed, float JumpForce)
     {
+        Anim.SetBool("IsGliding", false);
+        Anim.SetBool("IsJumping", false);
+        Anim.SetBool("IsStomping", false);
+        Anim.SetBool("IsSide", false);
+        Anim.SetBool("IsGrounded", true);
+
         disableController();
         _body.velocity = Vector3.zero;
         float time = (transform.position - target.position).magnitude / speed;
