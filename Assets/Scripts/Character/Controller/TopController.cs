@@ -172,18 +172,6 @@ public class TopController : Controller
     {
         Anim.SetBool("IsRolling", _isRolling);
         Anim.SetBool("IsDead", _isDead);
-
-        if (_isRolling)
-        {
-            Poui.transform.DOScaleY(0.7f, BlendSpeed);
-            Pivot.transform.Rotate(rotation);
-        }
-
-        if (!_isRolling)
-        {
-            Poui.transform.DOScaleY(1, BlendSpeed);
-            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
-        }
     }
 
     void OnCollisionExit(Collision other)

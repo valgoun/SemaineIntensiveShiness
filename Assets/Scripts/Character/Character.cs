@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
     private GameObject Poui;
     private GameObject Pivot;
     private Animator Anim;
+    private bool FirstRoll = true;
 
 
     // Use this for initialization
@@ -101,11 +102,18 @@ public class Character : MonoBehaviour
 
         if (_activeController.IsRolling())
         {
+            if (FirstRoll)
+            {
+                this.gameObject.transform.DORotate(new Vector3(0, 90, 0), 0.01f);
+                Pivot.transform.DORotate(new Vector3(0, 0, 0), 0.01f);
+                FirstRoll = false;
+            }
             Poui.transform.DOScaleY(0.7f, BlendSpeed);
             Pivot.transform.Rotate(rotation);
         }
         else
         {
+            FirstRoll = true;
             Poui.transform.DOScaleY(1, BlendSpeed);
             Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
         }
