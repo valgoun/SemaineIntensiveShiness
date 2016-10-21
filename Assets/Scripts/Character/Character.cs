@@ -123,6 +123,7 @@ public class Character : MonoBehaviour
             Poui.transform.DOScaleY(1, BlendSpeed);
             if (!FirstRoll)
             {
+                this.gameObject.transform.DORotate(new Vector3(0, 90, 0), 0.01f);
                 Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
                 FirstRoll = true;
             }
