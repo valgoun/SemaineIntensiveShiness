@@ -44,6 +44,9 @@ public class Character : MonoBehaviour
     private Animator Anim;
     private bool FirstRoll = true;
 
+    private Transform _lifePointsPui;
+    private bool _canLoosePDV = true;
+
 
     // Use this for initialization
     /// <summary>
@@ -62,6 +65,7 @@ public class Character : MonoBehaviour
         _body = GetComponent<Rigidbody>();
         _cam = Camera.main.GetComponent<CameraSetUp>();
         _lifePoints = TotalLifePoint;
+        _lifePointsPui = transform.GetChild(1);
 
 
         setActiveController(_topController, false);
@@ -189,7 +193,12 @@ public class Character : MonoBehaviour
     /// <param name="amount">how many life point will the character loose</param>
     public void DealDamages(float amount)
     {
+        if (!_canLoosePDV)
+            return;
         _lifePoints -= amount;
+        _lifePointsPui.GetChild((int)_lifePoints).gameObject.SetActive(false);
+        _canLoosePDV = false;
+        DOVirtual.DelayedCall(0.5f, () => _canLoosePDV = true);
         if (_lifePoints <= 0.0f)
         {
             _lifePoints = 0.0f;
@@ -200,6 +209,7 @@ public class Character : MonoBehaviour
     private void Dead()
     {
         SceneManager.LoadScene(0);
+        Seed.collected = 0;
     }
 
 }

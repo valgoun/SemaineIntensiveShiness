@@ -33,8 +33,6 @@ public class SideController : Controller
 
     private Animator Anim;
     private GameObject Poui;
-    private GameObject[] BabyPoui;
-    private Animator[] BabyAnim;
     private Vector3 rotation;
     private GameObject Pivot;
 
@@ -119,13 +117,6 @@ public class SideController : Controller
         _mRend = GetComponent<MeshRenderer>();
         Poui = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         Anim = Poui.GetComponent<Animator>();
-        BabyPoui = new GameObject[3];
-        BabyAnim = new Animator[3];
-        for (int i = 0; i < 3; i++)
-        {
-            BabyPoui[i] = transform.GetChild(i + 1).gameObject;
-            BabyAnim[i] = BabyPoui[i].GetComponent<Animator>();
-        }
     }
 
     void FixedUpdate()
@@ -148,12 +139,6 @@ public class SideController : Controller
         Anim.SetBool("IsJumping", _isJumping);
         Anim.SetBool("IsStomping", _isStomping);
         Anim.SetBool("IsDead", _isDead);
-
-        for (int i = 0; i < 3; i++)
-        {
-            BabyAnim[i].SetBool("IsRolling", _isRolling);
-            BabyAnim[i].SetBool("IsJumping", _isJumping);
-        }
     }
 
     /// <summary>
