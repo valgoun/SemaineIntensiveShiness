@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransitionToTop : MonoBehaviour
 {
-    public float Speed;
+    public float Speed, JumpForce;
 
     private Transform _target;
 
@@ -20,7 +20,7 @@ public class TransitionToTop : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            other.GetComponent<Character>().goTopView(_target, Speed);
+            other.GetComponent<Character>().goTopView(_target, Speed, JumpForce);
         }
     }
 }

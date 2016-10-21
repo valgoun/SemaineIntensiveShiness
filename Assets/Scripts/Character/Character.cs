@@ -2,14 +2,55 @@
 using System.Collections;
 using DG.Tweening;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
+    public float TotalLifePoint;
+    public static Character MainCharacter
+    {
+        get
+        {
+            return _mainCharacter;
+        }
+    }
+
+    public float Coins
+    {
+        get
+        {
+            return _coins;
+        }
+        set
+        {
+            _coins = value;
+        }
+    }
+    public float deathLevel = -20f;
+
     private Controller _activeController, _topController, _sideController;
     private Action _onBot, _onTop, _onBotDown, _onTopDown, _onNoInput;
     private Rigidbody _body;
     private CameraSetUp _cam;
+    private float _lifePoints;
+    private float _coins;
+    private static Character _mainCharacter;
+    public float RollingSpeed;
+    public float BlendSpeed;
+
+    private Vector3 rotation;
+    private GameObject Poui;
+    private GameObject Pivot;
+
+
     // Use this for initialization
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        _mainCharacter = this;
+    }
     void Start()
     {
         _topController = GetComponent<TopController>();
@@ -18,8 +59,14 @@ public class Character : MonoBehaviour
         _sideController.enabled = false;
         _body = GetComponent<Rigidbody>();
         _cam = Camera.main.GetComponent<CameraSetUp>();
+        _lifePoints = TotalLifePoint;
+
 
         setActiveController(_topController, false);
+
+        Pivot = transform.GetChild(0).gameObject;
+        Poui = Pivot.transform.GetChild(0).gameObject;
+        rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RollingSpeed * Time.deltaTime, 0, 0);
     }
 
     // Update is called once per frame
@@ -45,6 +92,21 @@ public class Character : MonoBehaviour
         if (!inputEvent)
             _onNoInput();
 
+        if (transform.position.y < deathLevel)
+        {
+            Dead();
+        }
+
+        if (_activeController.IsRolling())
+        {
+            Poui.transform.DOScaleY(0.7f, BlendSpeed);
+            Pivot.transform.Rotate(rotation);
+        }
+        else
+        {
+            Poui.transform.DOScaleY(1, BlendSpeed);
+            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
+        }
     }
 
     void setActiveController(Controller controller, bool IsRolling)
@@ -68,13 +130,13 @@ public class Character : MonoBehaviour
         _activeController.Disable();
     }
 
-    public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed)
+    public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed, float RunJumpForce, float RollJumpForce)
     {
         if (!_activeController.IsRolling())
         {
             disableController();
             _body.velocity = Vector3.zero;
-            _body.DOJump(runTarget.position, 5f, 1, (transform.position - runTarget.position).magnitude / runSpeed, false).SetUpdate(UpdateType.Fixed).OnComplete(() =>
+            _body.DOJump(runTarget.position, RunJumpForce, 1, (transform.position - runTarget.position).magnitude / runSpeed, false).SetUpdate(UpdateType.Fixed).OnComplete(() =>
             {
                 setActiveController(_sideController, false);
             });
@@ -84,7 +146,7 @@ public class Character : MonoBehaviour
         {
             disableController();
             _body.velocity = Vector3.zero;
-            _body.DOJump(rollTarget.position, 5f, 1, (transform.position - rollTarget.position).magnitude / rollSpeed, false).SetUpdate(UpdateType.Fixed).SetEase(Ease.Linear).OnComplete(() =>
+            _body.DOJump(rollTarget.position, RollJumpForce, 1, (transform.position - rollTarget.position).magnitude / rollSpeed, false).SetUpdate(UpdateType.Fixed).SetEase(Ease.Linear).OnComplete(() =>
             {
                 setActiveController(_sideController, true);
             });
@@ -92,16 +154,35 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void goTopView(Transform target, float speed)
+    public void goTopView(Transform target, float speed, float JumpForce)
     {
         disableController();
         _body.velocity = Vector3.zero;
         float time = (transform.position - target.position).magnitude / speed;
-        _body.DOJump(target.position, 5f, 1, time).SetUpdate(UpdateType.Fixed).OnComplete(() =>
+        _body.DOJump(target.position, JumpForce, 1, time).SetUpdate(UpdateType.Fixed).OnComplete(() =>
         {
             setActiveController(_topController, true);
         }).SetEase(Ease.Linear);
-        _cam.GoToPerspective(time);
+        _cam.GoToPerspective(time * 2);
+    }
+
+    /// <summary>
+    /// Deal Damages to the character
+    /// </summary>
+    /// <param name="amount">how many life point will the character loose</param>
+    public void DealDamages(float amount)
+    {
+        _lifePoints -= amount;
+        if (_lifePoints <= 0.0f)
+        {
+            _lifePoints = 0.0f;
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

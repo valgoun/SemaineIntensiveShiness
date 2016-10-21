@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e31078d57ac582944ad5e1e76a84f36a
 folderAsset: yes
 timeCreated: 1467188891
+=======
+guid: ac6a4b2f27f8a8f40a0a9eb39a597191
+folderAsset: yes
+timeCreated: 1476970651
+>>>>>>> refs/remotes/origin/grr
 licenseType: Pro
 DefaultImporter:
   userData: 
