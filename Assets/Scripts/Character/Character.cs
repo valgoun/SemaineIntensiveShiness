@@ -112,7 +112,7 @@ public class Character : MonoBehaviour
             if (FirstRoll)
             {
                 this.gameObject.transform.DORotate(new Vector3(0, 90, 0), 0.01f);
-                Pivot.transform.DORotate(new Vector3(0, 0, 0), 0.01f);
+                Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.01f);
                 FirstRoll = false;
             }
             Poui.transform.DOScaleY(0.7f, BlendSpeed);
@@ -120,9 +120,12 @@ public class Character : MonoBehaviour
         }
         else
         {
-            FirstRoll = true;
             Poui.transform.DOScaleY(1, BlendSpeed);
-            Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
+            if (!FirstRoll)
+            {
+                Pivot.transform.DORotate(new Vector3(0, 90, 0), 0.1f);
+                FirstRoll = true;
+            }
         }
     }
 
