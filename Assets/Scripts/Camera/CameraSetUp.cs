@@ -6,8 +6,7 @@ using DG.Tweening;
 public class CameraSetUp : MonoBehaviour
 {
 
-    [Range(1f, 20f)]
-    public float Distance = 5f;
+
     [Range(0f, 85f)]
     public float Angle = 60f;
 
@@ -17,8 +16,12 @@ public class CameraSetUp : MonoBehaviour
     public float Fov = 60;
     public float Near = 0.3f,
                  Far = 1000f;
+    [Range(1f, 30f)]
+    public float DistanceSide = 20f,
+                    DistanceTop = 5f;
 
 
+    private float Distance = 5f;
     private float _aspect;
     private Transform _target;
     private Camera _camera;
@@ -47,14 +50,14 @@ public class CameraSetUp : MonoBehaviour
 
     public void GoToSide(float time)
     {
-        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, time));
-        ChangeCamera(Distance, 0f, time);
+        //StartCoroutine(LerpFromTo(_camera.projectionMatrix, _ortho, time));
+        ChangeCamera(DistanceSide, 0f, time);
     }
 
     public void GoToPerspective(float time)
     {
-        StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, time));
-        ChangeCamera(Distance, 60f, time);
+        //StartCoroutine(LerpFromTo(_camera.projectionMatrix, _perspective, time));
+        ChangeCamera(DistanceTop, 60f, time);
     }
 
     Tweener ChangeCamera(float distance, float angle, float time)

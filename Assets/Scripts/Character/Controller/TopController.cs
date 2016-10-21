@@ -131,7 +131,6 @@ public class TopController : Controller
             return;
         _isRolling = false;
         _speed = MaxRunSpeed;
-        _mRend.material.color = Color.red;
         DOVirtual.DelayedCall(TimeBetweenRoll, () => Roll(ResetTime));
     }
 
@@ -143,7 +142,6 @@ public class TopController : Controller
     {
         _isRolling = true;
         _speed = MaxRollSpeed;
-        _mRend.material.color = Color.green;
         _rollingTween = DOVirtual.DelayedCall(time, () => WaitForRoll()).SetDelay(RollingInitialTime - ResetTime);
     }
     /// <summary>
