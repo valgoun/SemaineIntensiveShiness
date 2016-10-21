@@ -41,6 +41,7 @@ public class Character : MonoBehaviour
     private Vector3 rotation;
     private GameObject Poui;
     private GameObject Pivot;
+    private Animator Anim;
 
 
     // Use this for initialization
@@ -67,6 +68,7 @@ public class Character : MonoBehaviour
         Pivot = transform.GetChild(0).gameObject;
         Poui = Pivot.transform.GetChild(0).gameObject;
         rotation = new Vector3(Poui.transform.rotation.eulerAngles.x + RollingSpeed * Time.deltaTime, 0, 0);
+        Anim = Poui.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -132,6 +134,7 @@ public class Character : MonoBehaviour
 
     public void goSideView(Transform runTarget, Transform rollTarget, float runSpeed, float rollSpeed, float RunJumpForce, float RollJumpForce)
     {
+        Anim.SetBool("IsSide", true);
         if (!_activeController.IsRolling())
         {
             disableController();
@@ -156,6 +159,12 @@ public class Character : MonoBehaviour
 
     public void goTopView(Transform target, float speed, float JumpForce)
     {
+        Anim.SetBool("IsGliding", false);
+        Anim.SetBool("IsJumping", false);
+        Anim.SetBool("IsStomping", false);
+        Anim.SetBool("IsSide", false);
+        Anim.SetBool("IsGrounded", true);
+
         disableController();
         _body.velocity = Vector3.zero;
         float time = (transform.position - target.position).magnitude / speed;
