@@ -12,6 +12,7 @@ public class TopController : Controller
     [Header("Roll")]
     public float TimeBetweenRoll;
     public float RollingInitialTime, ResetTime, MinimalBounce;
+    public AudioSource audioBounce;
 
     private float _velZ = 0;
     private Transform _Wall = null;
@@ -219,6 +220,9 @@ public class TopController : Controller
         _body.velocity = vel;
         _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
         _velZ = _body.velocity.z;
+
+        audioBounce.pitch = 1f + UnityEngine.Random.Range(-0.2f, 0.2f);
+        audioBounce.Play();
     }
 
     /// <summary>
@@ -233,6 +237,9 @@ public class TopController : Controller
         _body.velocity = vel;
         _body.MoveRotation(Quaternion.LookRotation(_body.velocity.normalized, Vector3.up));
         _velZ = _body.velocity.z;
+
+        audioBounce.pitch = 1f + UnityEngine.Random.Range(-0.2f, 0.2f);
+        audioBounce.Play();
     }
 
     /// <summary>
