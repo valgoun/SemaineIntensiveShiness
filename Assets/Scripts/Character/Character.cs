@@ -46,6 +46,7 @@ public class Character : MonoBehaviour
 
     private Transform _lifePointsPui;
     private bool _canLoosePDV = true;
+    private bool _isDead = false;
 
 
     // Use this for initialization
@@ -80,6 +81,8 @@ public class Character : MonoBehaviour
     void Update()
     {
         bool inputEvent = false;
+        if (_isDead)
+            return;
         //Inputs
         if (Input.GetKeyDown(KeyCode.UpArrow))
             _onTopDown();
@@ -199,6 +202,10 @@ public class Character : MonoBehaviour
         _lifePointsPui.GetChild((int)_lifePoints).gameObject.SetActive(false);
         _canLoosePDV = false;
         DOVirtual.DelayedCall(0.5f, () => _canLoosePDV = true);
+
+        ScreenColor.Img.color = new Color(0.7f, 0.2f, 0.2f, 0.0f);
+        ScreenColor.Img.DOFade(0.7f, 0.07f).SetLoops(2, LoopType.Yoyo);
+
         if (_lifePoints <= 0.0f)
         {
             _lifePoints = 0.0f;
@@ -208,8 +215,14 @@ public class Character : MonoBehaviour
 
     private void Dead()
     {
-        SceneManager.LoadScene(0);
-        Seed.collected = 0;
+        _isDead = true;
+        _body.velocity = Vector3.zero + Vector3.up * _body.velocity.y;
+        ScreenColor.Img.color = new Color(0, 0, 0, 0);
+        ScreenColor.Img.DOFade(1, 1f).OnComplete(() =>
+        {
+            Seed.collected = 0;
+            SceneManager.LoadScene(0);
+        }).SetEase(Ease.InCirc);
     }
 
 }
